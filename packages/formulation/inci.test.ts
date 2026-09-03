@@ -18,7 +18,7 @@ describe("genererINCI", () => {
     const lignes: LigneFormule[] = [
       ligne({ id: "aqua", inci: "Aqua", pourcentage: 70, phase: "aqueuse" }),
       ligne({ id: "karite", inci: "Butyrospermum Parkii Butter", pourcentage: 20, phase: "huileuse" }),
-      ligne({ id: "glycerine", inci: "Glycerin", pourcentage: 5, phase: "actifs" }),
+      ligne({ id: "glycerine", inci: "Glycerin", pourcentage: 5, phase: "ajouts" }),
     ];
     expect(genererINCI(lignes)).toEqual([
       "Aqua",
@@ -30,8 +30,8 @@ describe("genererINCI", () => {
   it("moves ingredients <1% to an alphabetical block after the major ones", () => {
     const lignes: LigneFormule[] = [
       ligne({ id: "aqua", inci: "Aqua", pourcentage: 90, phase: "aqueuse" }),
-      ligne({ id: "z", inci: "Zinc Oxide", pourcentage: 0.5, phase: "actifs" }),
-      ligne({ id: "a", inci: "Ascorbic Acid", pourcentage: 0.5, phase: "actifs" }),
+      ligne({ id: "z", inci: "Zinc Oxide", pourcentage: 0.5, phase: "ajouts" }),
+      ligne({ id: "a", inci: "Ascorbic Acid", pourcentage: 0.5, phase: "ajouts" }),
     ];
     expect(genererINCI(lignes)).toEqual(["Aqua", "Ascorbic Acid", "Zinc Oxide"]);
   });
@@ -73,7 +73,7 @@ describe("genererINCI", () => {
   it("does not duplicate an allergen that is already listed as its own ingredient", () => {
     const lignes: LigneFormule[] = [
       ligne({ id: "aqua", inci: "Aqua", pourcentage: 90, phase: "aqueuse" }),
-      ligne({ id: "limonene-pur", inci: "Limonene", pourcentage: 3, phase: "actifs" }),
+      ligne({ id: "limonene-pur", inci: "Limonene", pourcentage: 3, phase: "ajouts" }),
       ligne({
         id: "bergamote",
         pourcentage: 2,

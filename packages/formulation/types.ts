@@ -11,41 +11,47 @@ export const PHI = (1 + Math.sqrt(5)) / 2;
 /** Tier of the perfume pyramid a line belongs to. */
 export type Etage = "fond" | "coeur" | "tete";
 
-/** Phase of a cosmetic formulation (skincare, not perfume). */
+/**
+ * Phase of a cosmetic formulation (skincare, not perfume). Matches
+ * `formule_lignes.phase` in supabase/migrations exactly (and the 5 phase
+ * blocks of écran 34, "composeur cosmétique", in design/INVENTAIRE.md) —
+ * keep the two in sync, this is the one place both sides read from.
+ */
 export type PhaseCosmetique =
   | "aqueuse"
   | "huileuse"
-  | "actifs"
   | "emulsion"
-  | "conservation"
-  | "parfum";
+  | "refroidissement"
+  | "ajouts";
 
 /**
- * Simplified subset of IFRA product categories relevant to the group's own
- * ranges (fine fragrance for SHÉA, leave-on/rinse-off cosmetics for ÉCLORÉE).
- * IFRA Standards number these 1-12; the comments below map each key to its
- * closest official category for reference. This is not the full standard.
+ * IFRA category a limit applies to. Deliberately a plain `string`, not a
+ * closed union: matches `matiere_limites_ifra.categorie_ifra` in
+ * supabase/migrations, which stores the real IFRA Standards numbering
+ * ("1", "4", "5A", "5C", "7A", "9", …) as free text rather than a simplified
+ * enum, since a single material legitimately carries different limits across
+ * more categories than the group's own two ranges currently use. Common
+ * values for this project: "4" (parfum fin), "5A"/"5D" (soin non rincé),
+ * "9" (soin rincé), "7A"/"7B" (usage capillaire).
  */
-export type CategorieIFRA =
-  | "parfum_fin" // catégorie 4 — parfum, eau de parfum, extrait appliqué sur peau
-  | "soin_non_rince" // catégorie 5 — crème, huile, lait corporel non rincés
-  | "soin_rince" // catégorie 9 — savon, gel douche, produits rincés
-  | "usage_capillaire"; // catégorie 7 — produits capillaires, contact peau limité
+export type CategorieIFRA = string;
 
-/** Recognised olfactory families — used to color blocks in the composer UI. */
+/**
+ * Olfactory family — used to color blocks in the composer UI and to filter
+ * the ingredient library. Matches `matieres.famille_olfactive` in
+ * supabase/migrations exactly (the 6 filter chips actually drawn on écran 30
+ * / écran 32 of the Stitch mockups: Boisé, Ambré, Épicé, Floral, Hespéridé,
+ * Minéral/Racine) — this is a simplified raw-material classification for
+ * this project's UI, not the 12-family "fragrance wheel" used in general
+ * perfumery taxonomy.
+ */
 export type FamilleOlfactive =
-  | "agrumes"
-  | "florale"
-  | "boisee"
-  | "orientale"
-  | "fougere"
-  | "chypree"
-  | "aromatique"
-  | "epicee"
-  | "gourmande"
-  | "aquatique"
-  | "musquee"
-  | "verte";
+  | "boise_resines"
+  | "floral_botanique"
+  | "ambre_balsamique"
+  | "epice_chaud"
+  | "hesperide_frais"
+  | "actifs_cosmetiques";
 
 /** An allergen carried by a raw material (EU cosmetic regulation, Annexe III). */
 export interface Allergene {
