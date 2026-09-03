@@ -1,0 +1,306 @@
+/**
+ * LA PARADOXA — Design tokens
+ * Source de vérité : /design/tokens.json (Phase 0, validé — ne pas modifier).
+ *
+ * Ce fichier étend le thème Tailwind v4 en mode CSS-first (@theme) et porte
+ * la logique de bascule visuelle par maison (data-maison="groupe|shea|ecloree").
+ *
+ * ── Élagage Material 3 ──────────────────────────────────────────────────
+ * Les 40 écrans Stitch embarquent, en plus des 9 couleurs de marque et de la
+ * gamme "surface", un thème Material 3 fantôme complet (primary/secondary/
+ * tertiary/error + leurs container/fixed/fixed-dim/inverse, ~25-30 tokens,
+ * voir tokens.json → color.semantic._note et design/INVENTAIRE.md § Écarts).
+ * Ce thème n'est PAS porté ici : conformément au brief de l'agent
+ * design-system ("ne porte dans tailwind.config que ce que le HTML réel
+ * consomme : les 9 couleurs de marque + les surface-container-* effectivement
+ * utilisés"), les rôles sémantiques (action primaire, alerte, succès) sont
+ * recomposés à partir des 9 couleurs de marque plutôt que dupliqués sous un
+ * second nom Material. Le rôle "danger/alerte" utilise rouge-bissap (déjà
+ * documenté comme tel dans tokens.json), le rôle "succès/conforme" utilise
+ * vert-moringa — jamais les tokens error/error-container/tertiary-fixed de
+ * Material. Voir le rapport de l'agent pour le détail des occurrences
+ * mesurées avant élagage.
+ */
+
+@theme {
+  /* ── Typographie : familles ─────────────────────────────────────────
+   * Les valeurs réelles (--font-fraunces, --font-inter) sont posées à
+   * l'exécution par next/font sur <html> (voir app/layout.tsx) ; elles sont
+   * donc raccordées plus bas dans le bloc @theme inline, pas ici.
+   */
+
+  /* ── Typographie : échelle (taille + interligne + graisse en un seul
+   * utilitaire text-*, chiffres tabulaires forcés sur label-tabular) ──── */
+  --text-display-hero: 3.5rem; /* 56px */
+  --text-display-hero--line-height: 4rem; /* 64px */
+  --text-display-hero--font-weight: 300;
+
+  --text-display-hero-mobile: 2.25rem; /* 36px */
+  --text-display-hero-mobile--line-height: 2.75rem; /* 44px */
+  --text-display-hero-mobile--font-weight: 300;
+
+  --text-headline-lg: 2.5rem; /* 40px */
+  --text-headline-lg--line-height: 3rem; /* 48px */
+  --text-headline-lg--font-weight: 300;
+
+  --text-headline-lg-mobile: 1.75rem; /* 28px */
+  --text-headline-lg-mobile--line-height: 2.25rem; /* 36px */
+  --text-headline-lg-mobile--font-weight: 300;
+
+  --text-headline-md: 1.75rem; /* 28px */
+  --text-headline-md--line-height: 2.25rem; /* 36px */
+  --text-headline-md--font-weight: 300;
+
+  --text-headline-sm: 1.375rem; /* 22px */
+  --text-headline-sm--line-height: 1.875rem; /* 30px */
+  --text-headline-sm--font-weight: 300;
+
+  --text-title-editorial: 1.125rem; /* 18px */
+  --text-title-editorial--line-height: 1.625rem; /* 26px */
+  --text-title-editorial--font-weight: 300;
+
+  --text-body-reading: 1rem; /* 16px */
+  --text-body-reading--line-height: 1.75rem; /* 28px */
+  --text-body-reading--font-weight: 400;
+
+  --text-body-ui: 0.875rem; /* 14px */
+  --text-body-ui--line-height: 1.375rem; /* 22px */
+  --text-body-ui--font-weight: 400;
+
+  --text-label-tabular: 0.8125rem; /* 13px */
+  --text-label-tabular--line-height: 1.125rem; /* 18px */
+  --text-label-tabular--font-weight: 500;
+
+  --text-caption-meta: 0.75rem; /* 12px */
+  --text-caption-meta--line-height: 1rem; /* 16px */
+  --text-caption-meta--font-weight: 400;
+
+  /* ── Couleurs de marque (9) ──────────────────────────────────────── */
+  --color-encre-baobab: #1b2a23;
+  --color-terre-de-dakar: #a94e2b;
+  --color-ocre-solaire: #c98a2e;
+  --color-or-karite: #d9b26a;
+  --color-vert-moringa: #4f7f46;
+  --color-sauge-claire: #8ca37b;
+  --color-rouge-bissap: #8e2c3b;
+  --color-ivoire-bouye: #f4efe3;
+  --color-sable: #e3daca;
+
+  /* ── Surfaces (globales, invariantes par maison — le canevas ivoire /
+   * encre reste le même partout ; seul l'accent change, cf. plus bas) ── */
+  --color-surface: #fef9ed;
+  --color-surface-dim: #dedace;
+  --color-surface-bright: #fef9ed;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f8f3e7;
+  --color-surface-container: #f2ede2;
+  --color-surface-container-high: #ede8dc;
+  --color-surface-container-highest: #e7e2d6;
+  --color-surface-variant: #e7e2d6;
+  --color-on-surface: #1d1c15;
+  --color-on-surface-variant: #434845;
+  --color-inverse-surface: #323029;
+  --color-inverse-on-surface: #f5f0e4;
+  --color-outline: #737874;
+  --color-outline-variant: #c3c8c3;
+  --color-background: #fef9ed;
+  --color-on-background: #1d1c15;
+
+  /* ── Espacement nommé (identique aux classes réellement dessinées par
+   * Stitch : p-space-lg, gap-space-md, etc.) ─────────────────────────── */
+  --spacing-space-xxs: 0.25rem;
+  --spacing-space-xs: 0.5rem;
+  --spacing-space-sm: 0.75rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2.5rem;
+  --spacing-space-2xl: 4rem;
+  --spacing-space-3xl: 6rem;
+  --spacing-space-plinth: 8rem;
+
+  /* Grille */
+  --container-desktop-max: 1440px;
+
+  /*
+   * ── Rayons de bordure ────────────────────────────────────────────
+   * Non redéfinis volontairement : l'échelle par défaut de Tailwind v4
+   * (rounded = --radius-sm = 0.25rem, rounded-lg = 0.5rem,
+   * rounded-xl = 0.75rem, rounded-full = 9999px) correspond déjà, valeur
+   * pour valeur, à design/tokens.json → radius. C'est la décision Phase 0
+   * validée (coins doux réellement dessinés par Stitch, pas le texte
+   * "roundedness: 0" contradictoire). Utiliser rounded / rounded-lg /
+   * rounded-xl / rounded-full directement dans les composants.
+   */
+
+  /*
+   * ── Mouvement ────────────────────────────────────────────────────
+   * Non redéfinies non plus : duration-300 / duration-500 / duration-700
+   * (transitions numériques Tailwind, natives) correspondent exactement à
+   * motion.durations.color-transition / image-reveal / hover-expand, et
+   * ease-out (natif) correspond à motion.easing. Convention d'usage :
+   *   - duration-300 ease-out → transitions de couleur / état
+   *   - duration-500 ease-out → révélation d'image
+   *   - duration-700 ease-out → expansion au survol (ex. portail 2 portes)
+   * Jamais de courbe "bouncy". prefers-reduced-motion neutralise tout,
+   * voir plus bas.
+   */
+
+  /* Élévation — ombre diffuse, faible opacité, jamais de flou numérique dur */
+  --shadow-ambient: 0 12px 28px -12px rgba(27, 42, 35, 0.12), 0 2px 8px -2px rgba(27, 42, 35, 0.06);
+
+  /*
+   * ── Rôles sémantiques globaux (succès / danger) ───────────────────
+   * Invariants par maison, contrairement à --color-maison-*. Rouge Bissap
+   * est déjà documenté dans tokens.json comme la couleur d'alerte / non-
+   * conformité IFRA / rupture de stock — utilisé tel quel (contraste
+   * mesuré : 7.11:1 sur Ivoire Bouye, large marge AA).
+   * Vert Moringa brut ne passe pas l'AA en texte normal sur Ivoire Bouye
+   * (~4.11:1 mesuré) : --color-success est une variante légèrement
+   * assombrie par color-mix vers Encre Baobab, même mécanisme que
+   * --maison-primary-strong plus bas, pour repasser au-dessus de 4.5:1.
+   */
+  --color-success: color-mix(in srgb, var(--color-vert-moringa) 85%, var(--color-encre-baobab) 15%);
+  --color-danger: var(--color-rouge-bissap);
+}
+
+/**
+ * ── Polices & rôles de maison : valeurs posées à l'exécution ────────────
+ * @theme (non "inline") fige la valeur au moment de la compilation CSS.
+ * --font-fraunces / --font-inter n'existent qu'à l'exécution (classes posées
+ * par next/font sur <html>), et --maison-* changent selon l'attribut
+ * data-maison porté par un conteneur. Les deux ont donc besoin de rester des
+ * références var() vivantes : @theme inline est fait pour ça.
+ */
+@theme inline {
+  --font-display: var(--font-fraunces);
+  --font-interface: var(--font-inter);
+
+  --color-maison-primary: var(--maison-primary);
+  --color-maison-primary-strong: var(--maison-primary-strong);
+  --color-maison-accent: var(--maison-accent);
+}
+
+/**
+ * ── Bascule par maison ───────────────────────────────────────────────
+ * Un seul jeu de composants ; ils lisent --color-maison-primary /
+ * --color-maison-primary-strong / --color-maison-accent, dont la valeur
+ * réelle dépend de l'attribut data-maison porté par un conteneur parent
+ * (jamais de composant dupliqué par maison, règle CLAUDE.md).
+ *
+ * "groupe" est la valeur par défaut (posée sur :root) : gouvernance,
+ * admin, pages légales, portail. Encre Baobab domine, Or Karité est
+ * l'accent — cf. tokens.json → theme.groupe et CLAUDE.md "Le groupe est
+ * encre profonde et or".
+ *
+ * -primary-strong est une variante légèrement assombrie de -primary,
+ * obtenue par color-mix vers Encre Baobab (jamais une valeur codée en dur :
+ * c'est un calcul sur le token lui-même). Elle sert de fond aux boutons
+ * pleins avec texte clair par-dessus : Vert Moringa brut sur Ivoire Bouye
+ * ne passe pas le contraste AA en texte normal (~4.1:1, mesuré) ; la
+ * version -strong repasse au-dessus de 4.5:1 pour les trois maisons tout en
+ * gardant la teinte reconnaissable. Encre Baobab (déjà très sombre) n'est
+ * quasiment pas affecté par le mélange.
+ */
+:root,
+[data-maison="groupe"] {
+  --maison-primary: var(--color-encre-baobab);
+  --maison-primary-strong: var(--color-encre-baobab);
+  --maison-accent: var(--color-or-karite);
+}
+
+[data-maison="shea"] {
+  --maison-primary: var(--color-terre-de-dakar);
+  --maison-primary-strong: color-mix(in srgb, var(--color-terre-de-dakar) 85%, var(--color-encre-baobab) 15%);
+  --maison-accent: var(--color-ocre-solaire);
+}
+
+[data-maison="ecloree"] {
+  --maison-primary: var(--color-vert-moringa);
+  --maison-primary-strong: color-mix(in srgb, var(--color-vert-moringa) 85%, var(--color-encre-baobab) 15%);
+  --maison-accent: var(--color-sauge-claire);
+}
+
+/**
+ * ── Proportions du nombre d'or (φ) ───────────────────────────────────
+ * Strates olfactives du composeur de parfum, swatches de composition
+ * cosmétique. Les largeurs réelles sont dérivées des données de formule
+ * (pourcentages effectifs) : ces variables exposent les proportions par
+ * défaut (19 / 31 / 50, confirmées exactes dans le composeur de parfum)
+ * pour l'état initial / le bouton "Équilibrer selon φ". Non exposées comme
+ * utilitaires Tailwind statiques car leur consommation réelle est dynamique
+ * (style calculé à partir de la formule, pas une classe fixe).
+ */
+:root {
+  --phi-top: 19%;
+  --phi-heart: 31%;
+  --phi-base: 50%;
+  --phi: 1.618;
+}
+
+/**
+ * ── Chiffres tabulaires obligatoires ──────────────────────────────────
+ * Prix, pourcentages, masses : jamais de chiffres proportionnels.
+ * Ajout additif (propriété différente de celles posées par l'utilitaire
+ * text-label-tabular généré plus haut, donc pas de conflit de cascade).
+ */
+.text-label-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Utilitaire explicite si des chiffres tabulaires sont nécessaires en
+   dehors du style label-tabular (ex. dans une cellule de table body-ui). */
+.tabular-nums-forced {
+  font-variant-numeric: tabular-nums;
+}
+
+/**
+ * ── Colonne de lecture bornée ──────────────────────────────────────────
+ * tokens.json (spacing.reading-max) et sa règle typographique associée
+ * l'appellent explicitement "classe reading-max" — utilitaire dédié plutôt
+ * que de faire porter cette valeur par l'échelle d'espacement générique.
+ */
+@utility reading-max {
+  max-width: 65ch;
+}
+
+/**
+ * ── Grain papier ─────────────────────────────────────────────────────
+ * Texture procédurale très faible opacité (jamais une image lourde),
+ * réservée aux aplats Ivoire Bouye / Encre Baobab. Décorative uniquement :
+ * pointer-events: none, aucune incidence sur le contraste du contenu.
+ */
+.paper-grain {
+  position: relative;
+  isolation: isolate;
+}
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0);
+  background-size: 4px 4px;
+}
+.paper-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * ── Mouvement : prefers-reduced-motion ────────────────────────────────
+ * Global et systématique : toute transition ou animation, présente ou
+ * future, est neutralisée pour les utilisateurs qui le demandent. C'est un
+ * critère d'acceptation (CLAUDE.md règle 7), pas une amélioration.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
