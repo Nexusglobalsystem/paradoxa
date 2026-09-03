@@ -2,6 +2,7 @@
 
 import { createBrowserClient } from "@supabase/ssr";
 
+import type { Database } from "./database.types";
 import { supabasePublishableKey, supabaseUrl } from "./env";
 
 /**
@@ -10,5 +11,5 @@ import { supabasePublishableKey, supabaseUrl } from "./env";
  * which is cookie-aware in a way this one deliberately isn't.
  */
 export function createClient() {
-  return createBrowserClient(supabaseUrl(), supabasePublishableKey());
+  return createBrowserClient<Database>(supabaseUrl(), supabasePublishableKey());
 }
