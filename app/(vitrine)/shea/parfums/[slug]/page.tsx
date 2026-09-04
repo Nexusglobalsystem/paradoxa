@@ -9,10 +9,11 @@ import {
   AccordionItem,
   AccordionTrigger,
   Badge,
-  Button,
 } from "@/components/ui";
 import { LIBELLE_ETAGE, ORDRE_ETAGES, PART_ETAGE } from "@/components/laboratoire/constantes-parfum";
 import { createStaticClient } from "@/lib/supabase/static";
+
+import { BoutonAjouterPanier } from "../../../bouton-ajouter-panier";
 
 import { contenuParfum } from "../contenu-editorial";
 
@@ -219,15 +220,23 @@ export default async function FicheParfumPage({ params }: PageProps) {
             ) : null}
 
             <div className="flex flex-col gap-space-sm pt-space-xs">
-              {/* Panier non encore fonctionnel dans ce périmètre (Vague 3) :
-                  /panier et son state sont construits par un autre agent en
-                  parallèle, sans fichier partagé avec cette page. Le bouton
-                  reste volontairement inerte plutôt que de simuler un faux
-                  ajout côté client. */}
-              <Button type="button" variant="primary" size="lg" className="w-full justify-between bg-terre-de-dakar tracking-wide">
+              <BoutonAjouterPanier
+                article={{
+                  produitId: produit.id,
+                  slug: produit.slug,
+                  nom: produit.nom,
+                  prixUnitaire: Number(produit.prix),
+                  devise: produit.devise,
+                  image: "/images/flacon-parfum-ambre.png",
+                  maison: "shea",
+                }}
+                variant="primary"
+                size="lg"
+                className="w-full justify-between bg-terre-de-dakar tracking-wide"
+              >
                 <span>Ajouter au panier</span>
                 <span className="font-label-tabular text-label-tabular">{prix}</span>
-              </Button>
+              </BoutonAjouterPanier>
               <p className="font-interface text-caption-meta text-on-surface-variant">
                 Livraison offerte dès 80 € d&apos;achat, en France et au Sénégal.
               </p>

@@ -72,8 +72,11 @@ export default async function CollectionSheaPage() {
   const produits: ProduitCollection[] = produitsBruts.map((produit) => {
     const contenu = contenuParfum(produit.slug);
     return {
+      id: produit.id,
       slug: produit.slug,
       nom: produit.nom,
+      prix: Number(produit.prix),
+      devise: produit.devise,
       prixLabel: formatPrix(Number(produit.prix), produit.devise),
       contenanceLabel:
         produit.contenance_valeur != null && produit.contenance_unite

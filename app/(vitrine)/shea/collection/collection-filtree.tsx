@@ -4,11 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 
-import { Button } from "@/components/ui";
+import { BoutonAjouterPanier } from "../../bouton-ajouter-panier";
 
 export interface ProduitCollection {
+  id: string;
   slug: string;
   nom: string;
+  prix: number;
+  devise: string;
   prixLabel: string;
   contenanceLabel: string | null;
   escale: string | null;
@@ -153,11 +156,22 @@ export function CollectionFiltree({ produits }: { produits: ProduitCollection[] 
                     >
                       {estCoffret ? "Découvrir le coffret" : "Découvrir l'escale"}
                     </Link>
-                    {/* Panier non fonctionnel dans ce périmètre — voir
-                        /shea/parfums/[slug]/page.tsx pour la même note. */}
-                    <Button type="button" variant="primary" size="sm" className="bg-terre-de-dakar">
+                    <BoutonAjouterPanier
+                      article={{
+                        produitId: produit.id,
+                        slug: produit.slug,
+                        nom: produit.nom,
+                        prixUnitaire: produit.prix,
+                        devise: produit.devise,
+                        image: produit.imageEscale,
+                        maison: "shea",
+                      }}
+                      variant="primary"
+                      size="sm"
+                      className="bg-terre-de-dakar"
+                    >
                       Ajouter
-                    </Button>
+                    </BoutonAjouterPanier>
                   </div>
                 </div>
               </div>

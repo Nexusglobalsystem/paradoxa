@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Badge, Button } from "@/components/ui";
+import { Badge } from "@/components/ui";
 import { createStaticClient } from "@/lib/supabase/static";
 
+import { BoutonAjouterPanier } from "../../bouton-ajouter-panier";
 import { contenuSoin, estRituelTete } from "../produits/contenu-editorial";
 
 /**
@@ -133,9 +134,12 @@ export default async function RituelTetePage() {
                 return (
                   <CarteProduit
                     key={produit.id}
+                    id={produit.id}
                     slug={produit.slug}
                     nom={produit.nom}
                     description={produit.description}
+                    prix={Number(produit.prix)}
+                    devise={produit.devise}
                     prixLabel={formatPrix(Number(produit.prix), produit.devise)}
                     contenanceLabel={contenanceLabel}
                     image={contenu.image}
@@ -195,9 +199,12 @@ export default async function RituelTetePage() {
                 return (
                   <CarteProduit
                     key={produit.id}
+                    id={produit.id}
                     slug={produit.slug}
                     nom={produit.nom}
                     description={produit.description}
+                    prix={Number(produit.prix)}
+                    devise={produit.devise}
                     prixLabel={formatPrix(Number(produit.prix), produit.devise)}
                     contenanceLabel={contenanceLabel}
                     image={contenu.image}
@@ -215,18 +222,24 @@ export default async function RituelTetePage() {
 }
 
 function CarteProduit({
+  id,
   slug,
   nom,
   description,
+  prix,
+  devise,
   prixLabel,
   contenanceLabel,
   image,
   imageAlt,
   accent,
 }: {
+  id: string;
   slug: string;
   nom: string;
   description: string | null;
+  prix: number;
+  devise: string;
   prixLabel: string;
   contenanceLabel: string | null;
   image: string;
@@ -281,11 +294,22 @@ function CarteProduit({
           >
             Découvrir
           </Link>
-          {/* Panier non fonctionnel dans ce périmètre — voir
-              /ecloree/produits/[slug]/page.tsx pour la même note. */}
-          <Button type="button" variant="primary" size="sm" className="flex-1">
+          <BoutonAjouterPanier
+            article={{
+              produitId: id,
+              slug,
+              nom,
+              prixUnitaire: prix,
+              devise,
+              image,
+              maison: "ecloree",
+            }}
+            variant="primary"
+            size="sm"
+            className="flex-1"
+          >
             Ajouter
-          </Button>
+          </BoutonAjouterPanier>
         </div>
       </div>
     </article>

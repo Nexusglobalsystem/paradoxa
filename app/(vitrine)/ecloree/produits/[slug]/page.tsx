@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Badge, Button, Card, CardContent } from "@/components/ui";
+import { Badge, Card, CardContent } from "@/components/ui";
 import { createStaticClient } from "@/lib/supabase/static";
 
+import { BoutonAjouterPanier } from "../../../bouton-ajouter-panier";
 import { contenuSoin, estRituelTete } from "../contenu-editorial";
 import { OngletsProduit, type Onglet } from "./onglets-produit";
 
@@ -257,12 +258,23 @@ export default async function FicheProduitEcloreePage({ params }: PageProps) {
             ) : null}
 
             <div className="flex flex-col gap-space-sm pt-space-xs">
-              {/* Panier non encore fonctionnel dans ce périmètre (Vague 3) :
-                  voir la même note dans /shea/parfums/[slug]/page.tsx. */}
-              <Button type="button" variant="primary" size="lg" className="w-full justify-between">
+              <BoutonAjouterPanier
+                article={{
+                  produitId: produit.id,
+                  slug: produit.slug,
+                  nom: produit.nom,
+                  prixUnitaire: Number(produit.prix),
+                  devise: produit.devise,
+                  image: contenu.image,
+                  maison: "ecloree",
+                }}
+                variant="primary"
+                size="lg"
+                className="w-full justify-between"
+              >
                 <span>Ajouter au panier</span>
                 <span className="font-label-tabular text-label-tabular">{prix}</span>
-              </Button>
+              </BoutonAjouterPanier>
               <p className="font-interface text-caption-meta text-on-surface-variant">
                 Livraison offerte dès 80 € d&apos;achat, en France et au Sénégal.
               </p>

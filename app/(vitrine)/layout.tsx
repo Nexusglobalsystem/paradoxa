@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { NavLink } from "./nav-link";
+import { PanierBadge } from "./panier-badge";
+import { PanierProvider } from "./panier-provider";
 
 /**
  * Chrome partagé de toutes les pages publiques/éditoriales (header + footer,
@@ -10,9 +12,18 @@ import { NavLink } from "./nav-link";
  * construire leur contenu, jamais leur propre en-tête. data-maison="groupe"
  * par défaut (encre + or) ; une page SHÉA ou ÉCLORÉE peut se ré-envelopper
  * dans son propre data-maison pour son contenu sans affecter ce chrome.
+ *
+ * `<PanierProvider>` enveloppe toute la vitrine (Vague 3) : le panier doit
+ * être ajoutable/visible depuis n'importe quelle fiche produit, pas
+ * seulement /panier et /commande — un Context scopé à ces deux seules
+ * routes aurait laissé le badge du header et les boutons "Ajouter au
+ * panier" des fiches produit sans accès au même état. Level Server
+ * Component conservé : PanierProvider est lui-même "use client" et ne fait
+ * "descendre" la frontière client que sur ses propres descendants.
  */
 export default function VitrineLayout({ children }: { children: ReactNode }) {
   return (
+    <PanierProvider>
     <div data-maison="groupe" className="flex min-h-screen flex-col bg-ivoire-bouye">
       <header className="sticky top-0 z-50 w-full border-b border-sable bg-ivoire-bouye/95 backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-desktop-max items-center justify-between px-space-lg lg:px-space-2xl">
@@ -55,14 +66,7 @@ export default function VitrineLayout({ children }: { children: ReactNode }) {
               <IconeCompte />
               <span className="hidden sm:inline">Compte client</span>
             </Link>
-            <Link
-              href="/panier"
-              className="flex items-center gap-space-xxs font-interface text-caption-meta tracking-wider text-on-surface-variant transition-colors duration-300 ease-out hover:text-encre-baobab"
-            >
-              <IconePanier />
-              <span className="hidden sm:inline">Panier</span>
-              <span className="text-label-tabular font-label-tabular text-or-karite">(0)</span>
-            </Link>
+            <PanierBadge />
           </div>
         </div>
       </header>
@@ -134,6 +138,7 @@ export default function VitrineLayout({ children }: { children: ReactNode }) {
         </div>
       </footer>
     </div>
+    </PanierProvider>
   );
 }
 
@@ -173,15 +178,6 @@ function IconeCompte() {
     <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] text-or-karite" fill="none" aria-hidden="true">
       <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.6" />
       <path d="M4.5 20c1.6-3.6 5-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function IconePanier() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] text-or-karite" fill="none" aria-hidden="true">
-      <path d="M6 8h12l-1 12H7L6 8Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" strokeWidth="1.6" />
     </svg>
   );
 }
