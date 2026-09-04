@@ -21,6 +21,7 @@ const DEMANDE: DemandeSessionPaiement = {
   },
   urlSucces: "https://laparadoxa.test/commande/confirmation?session_id={CHECKOUT_SESSION_ID}",
   urlAnnulation: "https://laparadoxa.test/commande",
+  clientId: null,
 };
 
 /** Fake minimal — seule la forme utilisée par StripeProvider est mockée, aucun appel réseau. */
@@ -53,12 +54,23 @@ describe("StripeProvider", () => {
     expect(params.cancel_url).toBe(DEMANDE.urlAnnulation);
     expect(params.line_items).toHaveLength(2); // 1 produit + 1 ligne livraison (fraisLivraison > 0)
     expect(params.metadata).toMatchObject({
+      client_id: "",
       email: "aissata@example.com",
       sous_total: "185.00",
       frais_livraison: "6.90",
       total: "191.90",
       devise: "EUR",
     });
+  });
+
+  it("carries a logged-in client's id in the session metadata, empty string for a guest", async () => {
+    const { faux, create } = creerFauxClientStripe({ id: "cs_test_client", url: "https://checkout.stripe.com/pay/cs_test_client" });
+    const provider = new StripeProvider(faux);
+
+    await provider.creerSession({ ...DEMANDE, clientId: "user-42" });
+
+    const params = create.mock.calls[0][0] as Stripe.Checkout.SessionCreateParams;
+    expect(params.metadata?.client_id).toBe("user-42");
   });
 
   it("omits the shipping line item when frais livraison is 0 (free shipping threshold reached)", async () => {

@@ -58,6 +58,7 @@ export class StripeProvider implements PaymentProvider {
       // elles-mêmes sont retrouvées via listLineItems, pas via ces
       // métadonnées (voir app/api/webhooks/stripe/construire-commande.ts).
       metadata: {
+        client_id: demande.clientId ?? "",
         nom_complet: demande.livraison.nomComplet,
         email: demande.livraison.email,
         telephone: demande.livraison.telephone ?? "",

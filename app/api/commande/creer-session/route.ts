@@ -61,6 +61,16 @@ export async function POST(request: Request) {
   // service_role pour ce SELECT, contrairement à l'écriture de `commandes`
   // (webhook uniquement).
   const supabase = await createClient();
+
+  // Optionnel : si un client est connecté (compte, écran 17), sa commande
+  // lui est liée automatiquement — voir payment-provider.ts et
+  // ../../webhooks/stripe/construire-commande.ts. Absent (checkout invité),
+  // clientId reste null, comportement inchangé.
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const clientId = user?.id ?? null;
+
   const idsProduits = [...new Set(articles.map((a) => a.produitId))];
 
   const { data: produitsBruts, error: erreurProduits } = await supabase
@@ -125,6 +135,7 @@ export async function POST(request: Request) {
       livraison,
       urlSucces,
       urlAnnulation,
+      clientId,
     });
 
     return NextResponse.json({ url: session.url } satisfies CreerSessionReponseSucces, { status: 201 });

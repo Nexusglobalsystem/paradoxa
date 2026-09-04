@@ -44,6 +44,14 @@ export interface DemandeSessionPaiement {
   livraison: CoordonneesLivraison;
   urlSucces: string;
   urlAnnulation: string;
+  /**
+   * Utilisateur Supabase Auth connecté au moment du paiement, s'il y en a
+   * un — checkout invité par défaut, donc null la plupart du temps. Posé en
+   * métadonnée de session (voir stripe-provider.ts) pour que le webhook
+   * (app/api/webhooks/stripe/construire-commande.ts) puisse lier
+   * commandes.client_id sans re-décoder de session côté serveur.
+   */
+  clientId: string | null;
 }
 
 export interface SessionPaiementCreee {

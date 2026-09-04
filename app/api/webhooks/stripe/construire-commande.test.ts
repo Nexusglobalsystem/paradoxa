@@ -55,6 +55,14 @@ describe("construireCommandeDepuisSession", () => {
     });
   });
 
+  it("links the commande to the logged-in client's id, when the checkout metadata carries one", () => {
+    const commande = construireCommandeDepuisSession(
+      { ...sessionDeBase, metadata: { ...sessionDeBase.metadata, client_id: "user-77" } },
+      "CMD-2026-000002",
+    );
+    expect(commande.client_id).toBe("user-77");
+  });
+
   it("falls back to customer_details.email when the email metadata is missing", () => {
     const commande = construireCommandeDepuisSession(
       { ...sessionDeBase, metadata: { ...sessionDeBase.metadata, email: "" } },

@@ -13,7 +13,7 @@ export function genererNumeroCommande(maintenant: Date = new Date(), alea: () =>
 
 export interface CommandeAPersister {
   numero_commande: string;
-  client_id: null;
+  client_id: string | null;
   email: string;
   nom_complet: string;
   telephone: string | null;
@@ -53,7 +53,10 @@ export function construireCommandeDepuisSession(
 
   return {
     numero_commande: numeroCommande,
-    client_id: null, // checkout invité par défaut cette vague, cf. migration commandes
+    // Posé par stripe-provider.ts en métadonnée de session si un client était
+    // connecté au moment du paiement ; chaîne vide (jamais undefined, Stripe
+    // n'accepte que des string en métadonnée) → null, checkout invité.
+    client_id: m.client_id || null,
     email: m.email || session.customer_details?.email || "",
     nom_complet: m.nom_complet || "",
     telephone: m.telephone || null,
