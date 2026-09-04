@@ -6,8 +6,6 @@ import type { MaisonGroupeDb, StatutFormule } from "@/components/laboratoire/typ
 import type { PhaseCosmetique } from "@/packages/formulation";
 import { createClient } from "@/lib/supabase/server";
 
-import { injecterPhCible } from "./ph";
-
 export interface LigneAEnregistrer {
   matiereId: string;
   phase: PhaseCosmetique;
@@ -22,7 +20,6 @@ export interface PayloadEnregistrement {
   maison: MaisonGroupeDb;
   poidsReferenceG: number;
   statut: StatutFormule;
-  /** Voir ph.ts pour la justification de la sérialisation dans notes. */
   phCible: number | null;
   description: string | null;
   notesExistantes: string | null;
@@ -93,7 +90,8 @@ export async function enregistrerFormule(payload: PayloadEnregistrement): Promis
     poids_reference_g: payload.poidsReferenceG,
     statut: payload.statut,
     description: payload.description?.trim() || null,
-    notes: injecterPhCible(payload.phCible, payload.notesExistantes),
+    notes: payload.notesExistantes?.trim() || null,
+    ph_cible: payload.phCible,
     updated_by: user?.id ?? null,
   };
 

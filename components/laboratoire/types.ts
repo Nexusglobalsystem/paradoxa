@@ -82,6 +82,8 @@ export interface FormuleRow {
   maison: MaisonGroupeDb;
   type_formule: "parfum" | "cosmetique";
   type_concentration: TypeConcentrationDb | null;
+  /** Cosmétique uniquement (écran 34) ; toujours null pour une formule parfum. */
+  ph_cible: number | null;
   poids_reference_g: number;
   version: number;
   formule_parent_id: string | null;

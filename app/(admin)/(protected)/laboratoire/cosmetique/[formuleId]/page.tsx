@@ -7,7 +7,6 @@ import { createClient } from "@/lib/supabase/server";
 
 import { ComposeurCosmetique } from "./composeur-cosmetique";
 import { ligneDepuisMatiere, type MatierePalette } from "./lignes";
-import { extrairePhCible } from "./ph";
 
 export const metadata: Metadata = {
   title: "Composeur cosmétique — Laboratoire LA PARADOXA",
@@ -66,9 +65,8 @@ export default async function ComposeurCosmetiquePage({ params }: PageProps) {
       return <FormuleIntrouvable />;
     }
     formule = formuleData as FormuleRow;
-    const { phCible, resteNotes } = extrairePhCible(formule.notes);
-    phCibleInitial = phCible;
-    resteNotesInitial = resteNotes;
+    phCibleInitial = formule.ph_cible;
+    resteNotesInitial = formule.notes;
 
     const { data: lignesData } = await supabase
       .from("formule_lignes")

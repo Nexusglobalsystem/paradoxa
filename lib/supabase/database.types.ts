@@ -86,6 +86,7 @@ export type Database = {
           maison: string
           nom: string
           notes: string | null
+          ph_cible: number | null
           poids_reference_g: number
           statut: string
           type_concentration: string | null
@@ -105,6 +106,7 @@ export type Database = {
           maison: string
           nom: string
           notes?: string | null
+          ph_cible?: number | null
           poids_reference_g?: number
           statut?: string
           type_concentration?: string | null
@@ -124,6 +126,7 @@ export type Database = {
           maison?: string
           nom?: string
           notes?: string | null
+          ph_cible?: number | null
           poids_reference_g?: number
           statut?: string
           type_concentration?: string | null
