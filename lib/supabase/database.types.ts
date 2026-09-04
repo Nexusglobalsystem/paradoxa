@@ -17,6 +17,132 @@ export type Database = {
   }
   public: {
     Tables: {
+      commande_lignes: {
+        Row: {
+          commande_id: string
+          created_at: string
+          id: string
+          nom_produit: string
+          prix_unitaire: number
+          produit_id: string | null
+          quantite: number
+          sous_total: number
+        }
+        Insert: {
+          commande_id: string
+          created_at?: string
+          id?: string
+          nom_produit: string
+          prix_unitaire: number
+          produit_id?: string | null
+          quantite: number
+          sous_total: number
+        }
+        Update: {
+          commande_id?: string
+          created_at?: string
+          id?: string
+          nom_produit?: string
+          prix_unitaire?: number
+          produit_id?: string | null
+          quantite?: number
+          sous_total?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "commande_lignes_commande_id_fkey"
+            columns: ["commande_id"]
+            isOneToOne: false
+            referencedRelation: "commandes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "commande_lignes_produit_id_fkey"
+            columns: ["produit_id"]
+            isOneToOne: false
+            referencedRelation: "produits"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      commandes: {
+        Row: {
+          adresse_ligne1: string
+          adresse_ligne2: string | null
+          client_id: string | null
+          code_postal: string
+          created_at: string
+          devise: string
+          email: string
+          frais_livraison: number
+          id: string
+          nom_complet: string
+          notes: string | null
+          numero_commande: string
+          numero_suivi: string | null
+          pays: string
+          sous_total: number
+          statut: string
+          stripe_payment_intent_id: string | null
+          stripe_session_id: string | null
+          telephone: string | null
+          total: number
+          transporteur: string | null
+          updated_at: string
+          ville: string
+        }
+        Insert: {
+          adresse_ligne1: string
+          adresse_ligne2?: string | null
+          client_id?: string | null
+          code_postal: string
+          created_at?: string
+          devise?: string
+          email: string
+          frais_livraison?: number
+          id?: string
+          nom_complet: string
+          notes?: string | null
+          numero_commande: string
+          numero_suivi?: string | null
+          pays?: string
+          sous_total: number
+          statut?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          telephone?: string | null
+          total: number
+          transporteur?: string | null
+          updated_at?: string
+          ville: string
+        }
+        Update: {
+          adresse_ligne1?: string
+          adresse_ligne2?: string | null
+          client_id?: string | null
+          code_postal?: string
+          created_at?: string
+          devise?: string
+          email?: string
+          frais_livraison?: number
+          id?: string
+          nom_complet?: string
+          notes?: string | null
+          numero_commande?: string
+          numero_suivi?: string | null
+          pays?: string
+          sous_total?: number
+          statut?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          telephone?: string | null
+          total?: number
+          transporteur?: string | null
+          updated_at?: string
+          ville?: string
+        }
+        Relationships: []
+      }
       formule_lignes: {
         Row: {
           created_at: string
