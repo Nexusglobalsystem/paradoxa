@@ -93,7 +93,15 @@ export function CollectionFiltree({ produits }: { produits: ProduitCollection[] 
             <article
               key={produit.slug}
               id={`escale-${produit.slug}`}
-              className="grid w-full scroll-mt-28 grid-cols-1 items-center gap-space-xl lg:grid-cols-12 lg:gap-space-2xl"
+              // scroll-mt-36 (144px) plutôt que le 28 (112px) d'origine : le
+              // header sticky (h-20 = 80px) plus la barre de filtre sticky
+              // juste en dessous (top-20, ~54px de haut) occupent ~134px en
+              // haut de viewport une fois défilé — 112px laissait le titre
+              // de l'escale partiellement caché derrière la barre de filtre
+              // au clic d'une puce (#escale-<slug>). 144px dégage une marge
+              // confortable sans être exagéré (Vague 4, vérifié par calcul
+              // des hauteurs sticky réelles ci-dessus, pas au hasard).
+              className="grid w-full scroll-mt-36 grid-cols-1 items-center gap-space-xl lg:grid-cols-12 lg:gap-space-2xl"
             >
               <div className={`relative lg:col-span-7 ${inverse ? "lg:order-2" : "lg:order-1"}`}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-container-high shadow-ambient sm:aspect-[16/10]">

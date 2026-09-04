@@ -5,6 +5,7 @@ import { Badge, Button, Card, CardContent, CardHeader, CardTitle } from "@/compo
 import { createClient } from "@/lib/supabase/server";
 
 import { seDeconnecter } from "./actions";
+import { RecommandationsOlfactives } from "./recommandations";
 import { LIBELLE_STATUT, VARIANTE_BADGE_STATUT } from "./statut-commande";
 
 export const metadata: Metadata = {
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-interface ProfilOlfactif {
+// Exportée pour ./recommandations.tsx, qui a besoin de la même forme de
+// donnée sans la réinventer (import type — aucun couplage runtime).
+export interface ProfilOlfactif {
   escale?: string;
   famillesDominantes?: string[];
   repondiLe?: string;
@@ -129,6 +132,8 @@ export default async function CompteDashboardPage() {
               )}
             </CardContent>
           </Card>
+
+          <RecommandationsOlfactives profilOlfactif={profilOlfactif} />
 
           {/* Commandes récentes */}
           <div>

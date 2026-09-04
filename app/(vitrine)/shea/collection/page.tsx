@@ -143,14 +143,28 @@ export default async function CollectionSheaPage() {
             </span>
           </div>
 
-          {/* Navigation d'escale — ancres, pas de pins positionnés sur l'image */}
+          {/* Navigation d'escale — ancres, pas de pins positionnés sur
+              l'image (voir commentaire d'en-tête). Le lien natif vers
+              `#escale-<slug>` suffit à défiler jusqu'à la section
+              correspondante : `scroll-mt-28` sur chaque `<article>` de
+              collection-filtree.tsx compense déjà la barre de filtre sticky
+              (top-20) — vérifié, aucun JS de défilement supplémentaire
+              n'est nécessaire. La lueur dorée continue ci-dessous est la
+              touche de mouvement signature de cet écran (Vague 4) : un
+              halo discret et lent, jamais un effet de rebond, neutralisé
+              sous prefers-reduced-motion par la règle globale de
+              app/design-tokens.css (animation-duration forcée à 0.01ms). */}
           <nav aria-label="Aller à une escale" className="flex flex-wrap gap-space-xs">
             {produits.map((produit) => (
               <a
                 key={produit.slug}
                 href={`#escale-${produit.slug}`}
-                className="bg-ivoire-bouye/10 px-space-sm py-space-xxs font-interface text-caption-meta text-sable transition-colors duration-300 ease-out hover:bg-or-karite hover:text-encre-baobab"
+                className="group/chip relative rounded-full bg-ivoire-bouye/10 px-space-sm py-space-xxs font-interface text-caption-meta text-sable transition-all duration-300 ease-out hover:bg-or-karite hover:text-encre-baobab hover:ring-2 hover:ring-or-karite/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-or-karite focus-visible:ring-offset-2 focus-visible:ring-offset-encre-baobab"
               >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 -z-10 animate-[pulse_3.5s_ease-in-out_infinite] rounded-full bg-or-karite/25 blur-md"
+                />
                 {produit.escale ?? produit.nom}
               </a>
             ))}

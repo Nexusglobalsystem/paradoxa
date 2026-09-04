@@ -8,6 +8,7 @@ import { Card } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 import { NewsletterForm, type EtatNewsletter } from "./newsletter-form";
+import { RevealOnScroll } from "./reveal-on-scroll";
 
 /**
  * Écran 1 — Portail du groupe (design/INVENTAIRE.md, fidèle à
@@ -87,9 +88,18 @@ export default function PortailPage() {
       />
 
       <PortailDeuxPortes />
-      <ManifesteBandeau />
-      <EditionsSignatures />
-      <Correspondances />
+      {/* Le hero deux-portes a déjà son propre mouvement (expansion au
+          survol) — seules les trois sections suivantes, statiques jusqu'ici,
+          reçoivent la révélation douce au défilement (Vague 4). */}
+      <RevealOnScroll>
+        <ManifesteBandeau />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <EditionsSignatures />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <Correspondances />
+      </RevealOnScroll>
     </>
   );
 }
