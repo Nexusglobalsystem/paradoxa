@@ -26,6 +26,14 @@ export interface AllergeneDonnee {
 export interface DonneesComplementaires {
   allergenes?: AllergeneDonnee[];
   facettes?: { nom: string; pourcentage: number }[];
+  /**
+   * Tags de bienfaits cosmétiques affichés dans la palette et agrégés dans
+   * le panneau d'analyse du composeur cosmétique (écran 34) — ex.
+   * ["Hydratant", "Réparateur", "Antioxydant"]. Absent la plupart du temps
+   * pour une matière à vocation parfum : traité comme "aucun bienfait
+   * déclaré", jamais fabriqué côté UI (même règle que allergenes ci-dessus).
+   */
+  bienfaits?: string[];
   [cle: string]: unknown;
 }
 
