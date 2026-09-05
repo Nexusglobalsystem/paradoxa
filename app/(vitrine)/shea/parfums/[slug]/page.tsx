@@ -165,7 +165,10 @@ export default async function FicheParfumPage({ params }: PageProps) {
           {/* Colonne droite : titre, pyramide résumée, sélection, actions */}
           <div className="flex flex-col gap-space-lg lg:col-span-5">
             <div className="space-y-space-xs border-b border-sable/80 pb-space-sm">
-              <span className="font-interface text-caption-meta font-medium uppercase tracking-[0.2em] text-ocre-solaire">
+              {/* text-ocre-solaire-strong, pas text-ocre-solaire : l'ocre brut ne fait
+                  que 2.55:1 sur ce fond clair (ivoire-bouye) — confirmé par axe-core
+                  (Vague 5). Voir app/design-tokens.css. */}
+              <span className="font-interface text-caption-meta font-medium uppercase tracking-[0.2em] text-ocre-solaire-strong">
                 Maison SHÉA · Haute parfumerie d&apos;origine
               </span>
               <h1 className="font-display text-headline-lg font-light tracking-tight text-encre-baobab">
@@ -205,7 +208,10 @@ export default async function FicheParfumPage({ params }: PageProps) {
                   aria-label={`Contenance sélectionnée : ${contenanceLabel}`}
                 >
                   <div className="flex flex-col">
-                    <span className="font-interface text-caption-meta uppercase text-terre-de-dakar">
+                    {/* text-maison-primary-strong (= terre-de-dakar assombri), pas
+                        text-terre-de-dakar brut : 4.26:1 sur ce fond
+                        (surface-container-highest) — confirmé par axe-core (Vague 5). */}
+                    <span className="font-interface text-caption-meta uppercase text-maison-primary-strong">
                       Flacon d&apos;atelier
                     </span>
                     <span className="font-display text-headline-sm text-encre-baobab">
@@ -250,7 +256,9 @@ export default async function FicheParfumPage({ params }: PageProps) {
         <div className="mx-auto max-w-desktop-max px-space-lg lg:px-space-2xl">
           <div className="mb-space-xl flex flex-col justify-between gap-space-md md:flex-row md:items-end">
             <div className="max-w-reading-max space-y-space-xxs">
-              <span className="font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite">
+              {/* text-or-karite-strong, pas text-or-karite : section sur fond clair
+                  (bg-surface-container-low) — confirmé par axe-core (Vague 5). */}
+              <span className="font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite-strong">
                 La méthode SHÉA
               </span>
               <h2 className="font-display text-headline-lg font-light text-encre-baobab">
@@ -273,7 +281,9 @@ export default async function FicheParfumPage({ params }: PageProps) {
                 >
                   <div className="flex flex-col gap-space-md md:flex-row md:items-center md:justify-between">
                     <div className="flex items-center gap-space-md md:w-1/3">
-                      <span className="font-label-tabular text-[20px] font-light text-or-karite">
+                      {/* text-or-karite-strong, pas text-or-karite : carte sur fond
+                          clair (bg-surface-container) — confirmé par axe-core (Vague 5). */}
+                      <span className="font-label-tabular text-[20px] font-light text-or-karite-strong">
                         {PART_ETAGE[etage]} %
                       </span>
                       <div>
@@ -338,7 +348,9 @@ export default async function FicheParfumPage({ params }: PageProps) {
       <section className="mx-auto w-full max-w-desktop-max px-space-lg py-space-2xl lg:px-space-2xl lg:py-space-3xl">
         <div className="grid grid-cols-1 gap-space-xl lg:grid-cols-12 lg:items-start">
           <div className="space-y-space-xs lg:col-span-4">
-            <span className="font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire">
+            {/* text-ocre-solaire-strong : même défaut fond clair, cf. l'eyebrow
+                "Maison SHÉA" plus haut sur cette page. */}
+            <span className="font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire-strong">
               Transparence &amp; rigueur
             </span>
             <h2 className="font-display text-headline-md text-encre-baobab">Les secrets de confection</h2>
@@ -362,9 +374,11 @@ export default async function FicheParfumPage({ params }: PageProps) {
                   Le karité et les matières premières sahéliennes de cette création sont sourcés
                   selon nos engagements de filière équitable — cueillette sauvage, coopératives
                   rémunérées au juste prix, zéro solvant pétrochimique.{" "}
+                  {/* text-maison-primary-strong, pas text-terre-de-dakar brut : même
+                      défaut fond clair que "Flacon d'atelier" plus haut sur cette page. */}
                   <Link
                     href="/engagements"
-                    className="text-terre-de-dakar underline underline-offset-2 transition-colors duration-300 ease-out hover:text-encre-baobab"
+                    className="text-maison-primary-strong underline underline-offset-2 transition-colors duration-300 ease-out hover:text-encre-baobab"
                   >
                     Découvrir notre démarche complète
                   </Link>

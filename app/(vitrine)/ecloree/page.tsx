@@ -182,7 +182,10 @@ function Rituels() {
     <section id="rituels" className="w-full bg-ivoire-bouye px-space-md py-space-3xl lg:px-space-2xl">
       <div className="mx-auto max-w-desktop-max space-y-space-2xl">
         <div className="reading-max space-y-space-xs">
-          <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary">
+          {/* text-maison-primary-strong, pas text-maison-primary : le vert-moringa
+              brut ne fait que ~4.1:1 sur ce fond clair (bg-ivoire-bouye) — confirmé
+              par axe-core (Vague 5), même défaut documenté que l'or-karite. */}
+          <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong">
             Rituels quotidiens
           </span>
           <h2 className="font-display text-headline-lg-mobile text-encre-baobab lg:text-headline-lg">
@@ -224,7 +227,9 @@ function Rituels() {
                 </div>
                 <div className="space-y-space-xs">
                   <h3 className="font-display text-headline-sm text-encre-baobab">{rituel.titre}</h3>
-                  <p className="font-interface text-caption-meta uppercase tracking-wider text-maison-primary">
+                  {/* text-maison-primary-strong : même défaut (vert-moringa brut sur
+                      fond clair) que ci-dessus, confirmé par axe-core. */}
+                  <p className="font-interface text-caption-meta uppercase tracking-wider text-maison-primary-strong">
                     {rituel.sousTitre}
                   </p>
                   <p className="pt-space-xs font-interface text-body-ui text-on-surface-variant">
@@ -256,7 +261,8 @@ function ActifsSignature() {
     <section id="actifs" className="w-full bg-surface-container px-space-md py-space-3xl lg:px-space-2xl">
       <div className="mx-auto max-w-desktop-max space-y-space-2xl">
         <div className="reading-max mx-auto space-y-space-xs text-center">
-          <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary">
+          {/* text-maison-primary-strong : même défaut, confirmé par axe-core. */}
+          <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong">
             Botanique fondamentale
           </span>
           <h2 className="font-display text-headline-lg-mobile text-encre-baobab lg:text-headline-lg">
@@ -410,7 +416,8 @@ function Bestsellers() {
       <div className="mx-auto max-w-desktop-max space-y-space-2xl">
         <div className="flex flex-col gap-space-md md:flex-row md:items-end md:justify-between">
           <div className="reading-max space-y-space-xs">
-            <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary">
+            {/* text-maison-primary-strong : même défaut, confirmé par axe-core. */}
+            <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong">
               La collection signature
             </span>
             <h2 className="font-display text-headline-lg-mobile text-encre-baobab lg:text-headline-lg">
@@ -452,7 +459,8 @@ function Bestsellers() {
                   </span>
                 </div>
                 <div className="space-y-space-xxs">
-                  <span className="block font-interface text-caption-meta uppercase text-maison-primary">
+                  {/* text-maison-primary-strong : même défaut, confirmé par axe-core. */}
+                  <span className="block font-interface text-caption-meta uppercase text-maison-primary-strong">
                     {produit.categorie}
                   </span>
                   <h3 className="font-display text-title-editorial text-encre-baobab">{produit.nom}</h3>
@@ -500,7 +508,8 @@ function BandeauSourcing() {
             />
           </div>
           <div className="absolute -bottom-space-md left-space-xs max-w-[280px] rounded-lg bg-ivoire-bouye p-space-md shadow-ambient sm:left-space-md">
-            <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary">
+            {/* text-maison-primary-strong : même défaut, confirmé par axe-core. */}
+            <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong">
               Coopérative Baobab Vert
             </span>
             <p className="mt-space-xxs font-interface text-body-ui text-encre-baobab">
@@ -511,7 +520,8 @@ function BandeauSourcing() {
 
         <div className="space-y-space-xl pt-space-lg lg:col-span-6 lg:pt-0">
           <div className="space-y-space-sm">
-            <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary">
+            {/* text-maison-primary-strong : même défaut, confirmé par axe-core. */}
+            <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong">
               Économie vivante
             </span>
             <h2 className="font-display text-headline-lg-mobile leading-tight text-encre-baobab lg:text-headline-lg">
@@ -556,8 +566,11 @@ function MetriqueSourcing({
 }) {
   return (
     <div className="bg-surface-container p-space-md">
+      {/* text-maison-primary-strong (branche accent) : vert-moringa brut ne fait
+          que ~4.04:1 sur ce fond (bg-surface-container) — confirmé par calcul et
+          par axe-core (Vague 5). */}
       <span
-        className={`block font-display text-headline-lg ${accent ? "text-maison-primary" : "text-encre-baobab"}`}
+        className={`block font-display text-headline-lg ${accent ? "text-maison-primary-strong" : "text-encre-baobab"}`}
       >
         {valeur}
       </span>
@@ -573,7 +586,8 @@ function BandeauDiagnostic() {
     <section className="w-full bg-sable/30 px-space-md py-space-2xl lg:px-space-2xl">
       <div className="mx-auto grid max-w-desktop-max grid-cols-1 items-center gap-space-xl lg:grid-cols-12">
         <div className="space-y-space-xs lg:col-span-8">
-          <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary">
+          {/* text-maison-primary-strong : même défaut, confirmé par axe-core. */}
+          <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong">
             Consultation personnalisée
           </span>
           <h3 className="font-display text-headline-md text-encre-baobab">

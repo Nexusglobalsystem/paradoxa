@@ -13,10 +13,21 @@ import { expect, test, type Page } from "@playwright/test";
 async function repondreATouteLesQuestions(page: Page) {
   await page.goto("/shea/quiz");
   for (let etape = 0; etape < 5; etape += 1) {
+    // La transition entre questions (transitionner() dans quiz-client.tsx)
+    // retarde le vrai changement d'étape de 260ms derrière un fondu — sans
+    // attendre que le titre change, une itération suivante peut cliquer sur
+    // le radio de la question qui est encore en train de disparaître,
+    // laissant le bouton "Poursuivre" bloqué désactivé (Vague 5, flaky e2e).
+    const titrePrecedent = await page.getByRole("heading", { level: 1 }).textContent();
     await page.getByRole("radiogroup").getByRole("radio").first().click();
     await page
       .getByRole("button", { name: /Poursuivre le voyage|Découvrir mon escale/ })
       .click();
+    if (etape < 4) {
+      await expect
+        .poll(() => page.getByRole("heading", { level: 1 }).textContent())
+        .not.toBe(titrePrecedent);
+    }
   }
 }
 

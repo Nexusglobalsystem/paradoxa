@@ -24,9 +24,13 @@ const twMerge = extendTailwindMerge({
           text: [
             "encre-baobab",
             "terre-de-dakar",
+            "terre-de-dakar-strong",
             "ocre-solaire",
+            "ocre-solaire-strong",
             "or-karite",
+            "or-karite-strong",
             "vert-moringa",
+            "vert-moringa-strong",
             "sauge-claire",
             "rouge-bissap",
             "ivoire-bouye",

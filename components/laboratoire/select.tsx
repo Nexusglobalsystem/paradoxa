@@ -16,7 +16,9 @@ export const Select = React.forwardRef<
     <select
       ref={ref}
       className={cn(
-        "font-interface w-full bg-transparent py-space-xs text-body-ui text-encre-baobab border-0 border-b-2 border-outline-variant/60 transition-colors duration-300 ease-out focus:outline-none focus:border-maison-accent disabled:cursor-not-allowed disabled:opacity-50",
+        // focus-visible:ring-encre-baobab, pas -or-karite : voir la même
+        // note dans components/ui/input.tsx (WCAG 1.4.11 sur fond clair).
+        "font-interface w-full bg-transparent py-space-xs text-body-ui text-encre-baobab border-0 border-b-2 border-outline-variant/60 transition-colors duration-300 ease-out focus:border-maison-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-encre-baobab focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const primaryLinkClasses =
-  "inline-flex items-center gap-space-xs rounded-lg bg-terre-de-dakar px-space-md py-space-sm font-interface text-body-ui text-ivoire-bouye shadow-ambient transition-colors duration-300 ease-out hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-or-karite focus-visible:ring-offset-2";
+  "inline-flex items-center gap-space-xs rounded-lg bg-terre-de-dakar px-space-md py-space-sm font-interface text-body-ui text-ivoire-bouye shadow-ambient transition-colors duration-300 ease-out hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-encre-baobab focus-visible:ring-offset-2";
 
 const VOLATILITE_LABEL: Record<string, string> = {
   tete: "Tête",
@@ -75,7 +75,7 @@ export default async function BibliothequeMatieresPage({ searchParams }: PagePro
         <div className="max-w-reading-max space-y-space-xxs">
           <div className="flex items-center gap-space-xs">
             <span aria-hidden="true" className="size-2 rounded-full bg-vert-moringa" />
-            <span className="font-interface text-caption-meta uppercase tracking-widest text-or-karite">
+            <span className="font-interface text-caption-meta uppercase tracking-widest text-or-karite-strong">
               Inventaire vivant — Dakar &amp; Grasse
             </span>
           </div>
@@ -102,7 +102,8 @@ export default async function BibliothequeMatieresPage({ searchParams }: PagePro
               name="q"
               defaultValue={q}
               placeholder="Rechercher par matière, nom INCI ou numéro CAS…"
-              className="w-full bg-surface-container px-space-md py-space-xs font-interface text-body-ui text-encre-baobab placeholder:text-on-surface-variant/70 outline-none transition-colors duration-300 ease-out focus:bg-surface-container-lowest"
+              aria-label="Rechercher par matière, nom INCI ou numéro CAS"
+              className="w-full bg-surface-container px-space-md py-space-xs font-interface text-body-ui text-encre-baobab placeholder:text-on-surface-variant/70 outline-none transition-colors duration-300 ease-out focus:bg-surface-container-lowest focus-visible:ring-2 focus-visible:ring-encre-baobab"
             />
           </div>
           <button

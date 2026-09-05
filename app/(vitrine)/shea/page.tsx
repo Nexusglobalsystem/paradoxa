@@ -117,21 +117,27 @@ function Escales() {
     >
       <div className="mx-auto max-w-desktop-max space-y-space-2xl">
         <div className="flex flex-col gap-space-lg border-b border-ivoire-bouye/20 pb-space-lg md:flex-row md:items-end md:justify-between">
+          {/* text-ivoire-bouye pleine opacité, pas text-or-karite / text-sable/XX :
+              sur ce fond bg-terre-de-dakar, or-karite ne fait que 2.76:1 et même
+              sable/90 ne fait que 3.52:1 — confirmé par axe-core (Vague 5). Seule
+              l'ivoire à pleine opacité passe ici (4.80:1, marge réelle mais
+              modeste : toute réduction d'opacité repasse sous 4.5:1). L'icône garde
+              son accent or (non concernée par le contraste de texte). */}
           <div className="reading-max space-y-space-xs">
-            <span className="flex items-center gap-space-xs font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite">
-              <IconeBoussole className="h-[15px] w-[15px]" />
+            <span className="flex items-center gap-space-xs font-interface text-caption-meta uppercase tracking-[0.2em] text-ivoire-bouye">
+              <IconeBoussole className="h-[15px] w-[15px] text-or-karite" />
               Anthologie olfactive
             </span>
             <h2 className="font-display text-headline-lg-mobile font-light text-ivoire-bouye lg:text-headline-lg">
               Les Six Escales
             </h2>
-            <p className="font-interface text-body-reading font-light text-sable/90">
+            <p className="font-interface text-body-reading font-light text-ivoire-bouye">
               Chaque composition capture la mémoire d&apos;une coordonnée terrestre. Des
               contreforts côtiers du Plateau dakarois aux sables chauds de l&apos;intérieur, le
               flacon devient réceptacle d&apos;une vibration pure.
             </p>
           </div>
-          <span className="font-interface text-caption-meta text-sable/70">
+          <span className="font-interface text-caption-meta text-ivoire-bouye">
             Faites défiler pour explorer chaque escale →
           </span>
         </div>
@@ -204,7 +210,14 @@ function MethodePhi() {
       largeurVar: "var(--phi-top)",
       pourcentage: "19 %",
       couleurPastille: "bg-sauge-claire",
-      couleurTexte: "text-sauge-claire",
+      // couleurTexte : text-or-karite, pas la teinte de la pastille — sauge-claire,
+      // ocre-solaire et terre-de-dakar tombent tous sous 4.5:1 en LABEL DE TEXTE sur
+      // cette carte translucide (bg-ivoire-bouye/5 sur fond encre-baobab), confirmé
+      // par axe-core (Vague 5) : 4.13:1 / 3.87:1 / 2.06:1. or-karite (déjà utilisé
+      // ailleurs sur cette même carte, ex. "Constante φ") y reste lisible (~7.5:1+).
+      // La distinction visuelle par strate est conservée par la pastille elle-même
+      // (couleurPastille, un fond, pas un texte — non concerné par ce contraste).
+      couleurTexte: "text-or-karite",
       etiquette: "Strate aérienne · Tête",
       titre: "L'envolée immédiate",
       description: "Agrumes solaires de Casamance, graines de moringa vivifiantes, embruns d'alizé marin.",
@@ -215,7 +228,9 @@ function MethodePhi() {
       largeurVar: "var(--phi-heart)",
       pourcentage: "31 %",
       couleurPastille: "bg-ocre-solaire",
-      couleurTexte: "text-ocre-solaire",
+      // couleurTexte : text-or-karite, pas ocre-solaire (3.87:1 en label sur cette
+      // carte translucide) — voir la note complète sur l'entrée "tete" ci-dessus.
+      couleurTexte: "text-or-karite",
       etiquette: "Strate rayonnante · Cœur",
       titre: "Le rythme solaire",
       description: "Résines chauffées au zénith, fleurs de savane gorgées d'ambre, cire brute et pistils de safran.",
@@ -226,7 +241,9 @@ function MethodePhi() {
       largeurVar: "var(--phi-base)",
       pourcentage: "50 %",
       couleurPastille: "bg-terre-de-dakar",
-      couleurTexte: "text-terre-de-dakar",
+      // couleurTexte : text-or-karite, pas terre-de-dakar (2.06:1 en label sur cette
+      // carte translucide) — voir la note complète sur l'entrée "tete" ci-dessus.
+      couleurTexte: "text-or-karite",
       etiquette: "Strate terrestre · Fond",
       titre: "L'enracinement profond",
       description: "Beurre de karité sauvage infusé, ébène noirci, racines de vétiver et myrrhe millénaire d'Éthiopie.",
@@ -261,6 +278,10 @@ function MethodePhi() {
             peau sahélienne : un ancrage lourd, un cœur palpitant et une tête qui s&apos;évapore
             comme une brise d&apos;aube.
           </p>
+          {/* text-sable/80, pas /60 : la version /60 ne fait que 2.06-4.45:1 sur ces
+              cartes translucides (bg-ivoire-bouye/5 sur fond bg-encre-baobab) —
+              confirmé par axe-core (Vague 5). /80 y est déjà utilisé sans problème
+              (description de strate ci-dessous). */}
           <div className="grid grid-cols-2 gap-space-md pt-space-md">
             <div className="border-l border-or-karite bg-ivoire-bouye/5 p-space-md">
               <span className="block font-label-tabular text-label-tabular uppercase tracking-widest text-or-karite">
@@ -269,18 +290,21 @@ function MethodePhi() {
               <span className="block pt-1 font-display text-headline-sm text-ivoire-bouye">
                 1,618033
               </span>
-              <span className="font-interface text-caption-meta text-sable/60">
+              <span className="font-interface text-caption-meta text-sable/80">
                 Équilibre d&apos;évaporation
               </span>
             </div>
             <div className="border-l border-terre-de-dakar bg-ivoire-bouye/5 p-space-md">
-              <span className="block font-label-tabular text-label-tabular uppercase tracking-widest text-terre-de-dakar">
+              {/* text-or-karite, pas text-terre-de-dakar : 2.36:1 sur cette carte
+                  translucide — confirmé par axe-core (Vague 5), même correctif que
+                  les strates de la carte "Architecture tripartite" plus bas. */}
+              <span className="block font-label-tabular text-label-tabular uppercase tracking-widest text-or-karite">
                 Maturation
               </span>
               <span className="block pt-1 font-display text-headline-sm text-ivoire-bouye">
                 90 jours
               </span>
-              <span className="font-interface text-caption-meta text-sable/60">
+              <span className="font-interface text-caption-meta text-sable/80">
                 En fûts de grès cuit
               </span>
             </div>
@@ -335,7 +359,7 @@ function MethodePhi() {
                     <span className="block font-display text-headline-md leading-none text-or-karite/90">
                       {strate.pourcentage}
                     </span>
-                    <span className="font-interface text-caption-meta text-sable/60">
+                    <span className="font-interface text-caption-meta text-sable/80">
                       {strate.note}
                     </span>
                   </div>
@@ -344,7 +368,7 @@ function MethodePhi() {
             ))}
           </div>
 
-          <div className="flex items-center justify-between font-interface text-caption-meta text-sable/60">
+          <div className="flex items-center justify-between font-interface text-caption-meta text-sable/80">
             <span>∑ = 100 % de la matière parfumée</span>
             <span className="font-display italic text-or-karite">
               Formule certifiée IFRA · Origine Sénégal garantie

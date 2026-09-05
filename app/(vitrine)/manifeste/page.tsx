@@ -189,7 +189,10 @@ export default function ManifestePage() {
                     {jalon.texte}
                   </p>
                 </div>
-                <div className="pt-space-md font-interface text-caption-meta uppercase tracking-widest text-or-karite">
+                {/* text-or-karite-strong, pas text-or-karite : cette carte est sur
+                    fond clair (bg-ivoire-bouye) — l'or brut y tombe à 1.73:1 de
+                    contraste, confirmé par axe-core (Vague 5). */}
+                <div className="pt-space-md font-interface text-caption-meta uppercase tracking-widest text-or-karite-strong">
                   {jalon.lieu}
                 </div>
               </li>

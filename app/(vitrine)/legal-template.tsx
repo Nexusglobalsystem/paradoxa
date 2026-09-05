@@ -45,7 +45,9 @@ export function LegalPage({ eyebrow, title, intro, reference, sections }: LegalP
           {/* Sommaire, sticky sur desktop uniquement */}
           <aside className="hidden lg:col-span-4 lg:block">
             <nav aria-label="Sommaire" className="sticky top-28 space-y-space-md pr-space-md">
-              <span className="block font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite">
+              {/* text-or-karite-strong, pas text-or-karite : sommaire sur fond clair
+                  (page vitrine par défaut) — confirmé par axe-core (Vague 5). */}
+              <span className="block font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite-strong">
                 Sommaire
               </span>
               <ol className="flex flex-col gap-space-xs">
@@ -55,7 +57,8 @@ export function LegalPage({ eyebrow, title, intro, reference, sections }: LegalP
                       href={`#${s.id}`}
                       className="flex items-start gap-space-sm py-space-xxs font-interface text-body-ui text-on-surface-variant transition-colors duration-300 ease-out hover:text-encre-baobab"
                     >
-                      <span className="shrink-0 font-label-tabular text-label-tabular text-or-karite">
+                      {/* text-or-karite-strong : même colonne fond clair, cf. Sommaire. */}
+                      <span className="shrink-0 font-label-tabular text-label-tabular text-or-karite-strong">
                         {s.numeral}
                       </span>
                       <span>{s.title}</span>
@@ -64,7 +67,8 @@ export function LegalPage({ eyebrow, title, intro, reference, sections }: LegalP
                 ))}
               </ol>
               <div className="mt-space-lg rounded-lg bg-surface-container p-space-md">
-                <span className="font-interface text-caption-meta uppercase tracking-widest text-or-karite">
+                {/* text-or-karite-strong : encart sur fond clair (bg-surface-container). */}
+                <span className="font-interface text-caption-meta uppercase tracking-widest text-or-karite-strong">
                   Référence
                 </span>
                 <p className="mt-space-xxs font-label-tabular text-label-tabular text-encre-baobab">
@@ -79,8 +83,10 @@ export function LegalPage({ eyebrow, title, intro, reference, sections }: LegalP
             {sections.map((s) => (
               <article key={s.id} id={s.id} className="scroll-mt-28 space-y-space-md">
                 <div className="flex items-baseline gap-space-sm">
+                  {/* text-or-karite-strong, pas text-or-karite : colonne de lecture sur
+                      fond clair — confirmé par axe-core (Vague 5). */}
                   <span
-                    className="font-display text-headline-lg text-or-karite"
+                    className="font-display text-headline-lg text-or-karite-strong"
                     aria-hidden="true"
                   >
                     {s.numeral}

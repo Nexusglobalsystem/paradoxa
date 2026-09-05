@@ -73,7 +73,10 @@ export default async function RituelTetePage() {
       <section className="w-full bg-surface-container-low py-space-xl lg:py-space-2xl">
         <div className="mx-auto grid max-w-desktop-max grid-cols-1 items-center gap-space-xl px-space-lg lg:grid-cols-12 lg:px-space-2xl">
           <div className="space-y-space-md lg:col-span-7">
-            <div className="inline-flex items-center gap-space-xs rounded-full bg-surface-container px-space-sm py-space-xxs font-interface text-caption-meta uppercase tracking-widest text-maison-primary">
+            {/* text-maison-primary-strong, pas text-maison-primary : vert-moringa brut
+                ne fait que ~4.25:1 sur ce fond clair (bg-surface-container) — confirmé
+                par axe-core (Vague 5), même défaut documenté que l'or-karite. */}
+            <div className="inline-flex items-center gap-space-xs rounded-full bg-surface-container px-space-sm py-space-xxs font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong">
               Maison ÉCLORÉE · Soins végétaux purs
             </div>
             <h1 className="font-display text-headline-lg font-light tracking-tight text-encre-baobab">
@@ -170,7 +173,9 @@ export default async function RituelTetePage() {
           <div className="mx-auto max-w-desktop-max space-y-space-xl px-space-lg lg:px-space-2xl">
             <div className="flex flex-col gap-space-sm md:flex-row md:items-end md:justify-between">
               <div className="max-w-reading-max space-y-space-xxs">
-                <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary">
+                {/* text-maison-primary-strong : même défaut sur fond clair
+                    (bg-surface-container-low), confirmé par axe-core. */}
+                <span className="block font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong">
                   Compléter le rituel
                 </span>
                 <h2 className="font-display text-headline-md text-encre-baobab">

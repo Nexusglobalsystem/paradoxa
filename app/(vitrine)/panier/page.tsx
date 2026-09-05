@@ -147,7 +147,10 @@ export default function PanierPage() {
                 </div>
               </div>
             ) : (
-              <p className="font-interface text-caption-meta text-vert-moringa">Livraison offerte ✓</p>
+              // text-success, pas text-vert-moringa brut : 4.03:1 sur ce fond clair,
+              // confirmé par axe-core (Vague 5) ; --color-success est déjà la variante
+              // accessible du même vert, et sémantiquement plus juste ici.
+              <p className="font-interface text-caption-meta text-success">Livraison offerte ✓</p>
             )}
 
             <div className="flex flex-col gap-space-xs border-t border-sable pt-space-sm font-interface text-body-ui">

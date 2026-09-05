@@ -30,7 +30,9 @@ export default function JournalPage() {
     <div className="mx-auto w-full max-w-desktop-max space-y-space-2xl px-space-lg py-space-xl lg:space-y-space-3xl lg:px-space-2xl lg:py-space-2xl">
       {/* En-tête éditorial */}
       <header className="space-y-space-md border-b border-sable/50 pb-space-xl lg:space-y-space-lg">
-        <div className="flex flex-wrap items-center justify-between gap-space-sm font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite">
+        {/* text-or-karite-strong, pas text-or-karite : en-tête sur fond clair
+            (bg-ivoire-bouye) — confirmé par axe-core (Vague 5). */}
+        <div className="flex flex-wrap items-center justify-between gap-space-sm font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite-strong">
           <div className="flex items-center gap-space-xs">
             <span className="h-1.5 w-1.5 rounded-full bg-or-karite" aria-hidden="true" />
             <span>Chroniques &amp; terroirs</span>
@@ -96,7 +98,9 @@ export default function JournalPage() {
           </div>
           <div className="flex flex-col justify-between space-y-space-lg bg-surface-container-low p-space-lg lg:col-span-5 lg:p-space-2xl">
             <div className="space-y-space-md">
-              <div className="flex items-center gap-space-xs font-interface text-caption-meta uppercase tracking-widest text-or-karite">
+              {/* text-or-karite-strong, pas text-or-karite : carte sur fond clair
+                  (bg-surface-container-low) — confirmé par axe-core (Vague 5). */}
+              <div className="flex items-center gap-space-xs font-interface text-caption-meta uppercase tracking-widest text-or-karite-strong">
                 <span className="h-0.5 w-2 bg-or-karite" aria-hidden="true" />
                 <span>{CATEGORIE_LABEL[aLaUne.categorie]} · Chronique totem</span>
               </div>
@@ -196,16 +200,19 @@ export default function JournalPage() {
           {/* Newsletter — fond ocre. Formulaire décoratif, non câblé à un
               backend : la collecte réelle d'emails est hors du périmètre de
               cet agent (vitrine éditoriale statique). */}
-          <div className="relative space-y-space-lg overflow-hidden rounded-xl bg-ocre-solaire p-space-lg text-ivoire-bouye shadow-ambient lg:p-space-xl">
+          {/* text-encre-baobab, pas text-ivoire-bouye : même à pleine opacité,
+              l'ivoire ne fait que ~2.56:1 sur ce fond bg-ocre-solaire — confirmé
+              axe-core (Vague 5). L'encre y tient ~5.18:1. */}
+          <div className="relative space-y-space-lg overflow-hidden rounded-xl bg-ocre-solaire p-space-lg text-encre-baobab shadow-ambient lg:p-space-xl">
             <div className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-40 rounded-full bg-terre-de-dakar/20 blur-2xl" aria-hidden="true" />
             <div className="space-y-space-xs">
-              <span className="block font-interface text-[11px] uppercase tracking-[0.2em] text-ivoire-bouye/80">
+              <span className="block font-interface text-[11px] uppercase tracking-[0.2em] text-encre-baobab">
                 Gazette épistolaire
               </span>
-              <h3 className="font-display text-headline-md font-light leading-snug text-ivoire-bouye">
+              <h3 className="font-display text-headline-md font-light leading-snug text-encre-baobab">
                 Le cercle de correspondance
               </h3>
-              <p className="pt-space-xxs font-interface text-body-ui leading-relaxed text-ivoire-bouye/90">
+              <p className="pt-space-xxs font-interface text-body-ui leading-relaxed text-encre-baobab">
                 Recevez à chaque nouveau quartier de lune un récit inédit de nos formulateurs et les
                 invitations aux salons privés de Paris et Dakar.
               </p>
@@ -214,7 +221,7 @@ export default function JournalPage() {
               <div className="space-y-space-xxs">
                 <label
                   htmlFor="journal-newsletter-email"
-                  className="block font-interface text-caption-meta tracking-wider text-ivoire-bouye/90"
+                  className="block font-interface text-caption-meta tracking-wider text-encre-baobab"
                 >
                   Votre adresse de correspondance
                 </label>
@@ -222,7 +229,7 @@ export default function JournalPage() {
                   id="journal-newsletter-email"
                   type="email"
                   placeholder="nom@maison.com"
-                  className="w-full border-b border-ivoire-bouye/70 bg-transparent pb-space-xs font-interface text-body-ui text-ivoire-bouye placeholder:text-ivoire-bouye/50 focus:border-ivoire-bouye focus:outline-none"
+                  className="w-full border-b border-encre-baobab bg-transparent pb-space-xs font-interface text-body-ui text-encre-baobab placeholder:text-encre-baobab/60 focus:border-encre-baobab focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-encre-baobab focus-visible:ring-offset-2"
                 />
               </div>
               <button
@@ -232,7 +239,7 @@ export default function JournalPage() {
                 Rejoindre le cercle
               </button>
             </form>
-            <div className="flex items-center gap-space-xs border-t border-ivoire-bouye/20 pt-space-xs font-interface text-[11px] text-ivoire-bouye/70">
+            <div className="flex items-center gap-space-xs border-t border-encre-baobab/20 pt-space-xs font-interface text-[11px] text-encre-baobab">
               <span>Édition confidentielle · pas plus de deux lettres par mois.</span>
             </div>
           </div>

@@ -20,8 +20,10 @@ const SUJETS = [
 // Même filet minimaliste que components/ui/input.tsx (baseFieldClasses n'est
 // pas exporté) — <select> natif, pas de dépendance UI supplémentaire pour un
 // menu à six options.
+// focus-visible:ring-encre-baobab : même correctif que components/ui/input.tsx
+// (le filet de repli seul n'offre aucun focus visible — WCAG 2.4.7, Vague 5).
 const selectClasses =
-  "font-interface w-full bg-transparent py-space-xs text-body-ui text-encre-baobab border-0 border-b-2 border-outline-variant/60 transition-colors duration-300 ease-out focus:outline-none focus:border-maison-accent";
+  "font-interface w-full bg-transparent py-space-xs text-body-ui text-encre-baobab border-0 border-b-2 border-outline-variant/60 transition-colors duration-300 ease-out focus:border-maison-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-encre-baobab focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
 
 export function ContactForm() {
   const [etat, action, enCours] = useActionState(envoyerMessage, etatInitial);

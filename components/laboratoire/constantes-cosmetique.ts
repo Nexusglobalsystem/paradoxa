@@ -54,7 +54,7 @@ export const SOUS_LIBELLE_PHASE: Record<PhaseCosmetique, string> = {
  */
 export const COULEUR_PHASE: Record<PhaseCosmetique, { bg: string; text: string; dotBg: string }> = {
   aqueuse: { bg: "bg-sauge-claire", text: "text-vert-moringa", dotBg: "bg-sauge-claire/25" },
-  huileuse: { bg: "bg-or-karite", text: "text-or-karite", dotBg: "bg-or-karite/20" },
+  huileuse: { bg: "bg-or-karite", text: "text-or-karite-strong", dotBg: "bg-or-karite/20" },
   emulsion: { bg: "bg-sable", text: "text-encre-baobab", dotBg: "bg-sable" },
   refroidissement: { bg: "bg-vert-moringa", text: "text-vert-moringa", dotBg: "bg-vert-moringa/20" },
   ajouts: { bg: "bg-terre-de-dakar", text: "text-terre-de-dakar", dotBg: "bg-terre-de-dakar/20" },

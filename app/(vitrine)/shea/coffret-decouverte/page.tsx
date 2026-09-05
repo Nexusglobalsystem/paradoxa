@@ -157,11 +157,15 @@ function Hero({ prix, article }: { prix: string; article: ArticleCoffret }) {
                     Édition permanente — Cinq escales
                   </span>
                 </div>
-                <span className="font-label-tabular text-label-tabular text-ocre-solaire">5 × 2 ml</span>
+                {/* text-ocre-solaire-strong, pas text-ocre-solaire : 2.34-2.79:1 sur
+                    ces fonds clairs — confirmé par axe-core (Vague 5). */}
+                <span className="font-label-tabular text-label-tabular text-ocre-solaire-strong">5 × 2 ml</span>
               </div>
             </div>
             <div className="absolute -bottom-6 -right-6 hidden max-w-[240px] bg-surface-container-lowest p-space-md shadow-ambient sm:block">
-              <span className="mb-space-xxs block font-interface text-caption-meta uppercase tracking-wider text-terre-de-dakar">
+              {/* text-maison-primary-strong, pas text-terre-de-dakar brut : même
+                  défaut fond clair, confirmé par axe-core (Vague 5). */}
+              <span className="mb-space-xxs block font-interface text-caption-meta uppercase tracking-wider text-maison-primary-strong">
                 Formulation pure
               </span>
               <p className="font-interface text-body-ui text-xs text-encre-baobab">
@@ -172,7 +176,8 @@ function Hero({ prix, article }: { prix: string; article: ArticleCoffret }) {
 
           <div className="flex flex-col justify-center gap-space-md lg:col-span-6 lg:gap-space-lg">
             <div className="space-y-space-xs">
-              <span className="block font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire">
+              {/* text-ocre-solaire-strong : même défaut fond clair, cf. plus haut. */}
+              <span className="block font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire-strong">
                 Maison SHÉA — Initiation olfactive
               </span>
               <h1 className="font-display text-headline-lg-mobile font-light leading-tight text-encre-baobab lg:text-headline-lg">
@@ -228,9 +233,11 @@ function Hero({ prix, article }: { prix: string; article: ArticleCoffret }) {
 
               <p className="pt-space-xs font-interface text-caption-meta text-on-surface-variant">
                 Pas encore certain·e de votre escale ?{" "}
+                {/* text-maison-primary-strong, pas text-terre-de-dakar brut : même
+                    défaut fond clair, confirmé par axe-core (Vague 5). */}
                 <Link
                   href="/shea/quiz"
-                  className="text-terre-de-dakar underline underline-offset-2 transition-colors duration-300 ease-out hover:text-encre-baobab"
+                  className="text-maison-primary-strong underline underline-offset-2 transition-colors duration-300 ease-out hover:text-encre-baobab"
                 >
                   Faites le quiz olfactif
                 </Link>{" "}
@@ -266,7 +273,9 @@ function PartitionEscales({ escales }: { escales: EscaleCoffret[] }) {
       <div className="mx-auto max-w-desktop-max px-space-lg lg:px-space-2xl">
         <div className="mb-space-xl flex flex-col justify-between gap-space-md md:flex-row md:items-end">
           <div className="space-y-space-xs">
-            <span className="block font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire">
+            {/* text-ocre-solaire-strong : même défaut fond clair, cf. plus haut sur
+                cette page. */}
+            <span className="block font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire-strong">
               Anthologie sensorielle
             </span>
             <h2 className="font-display text-headline-lg-mobile font-light text-encre-baobab lg:text-headline-lg">
@@ -296,10 +305,13 @@ function PartitionEscales({ escales }: { escales: EscaleCoffret[] }) {
                     <span className="text-or-karite-strong">{String(index + 1).padStart(2, "0")}</span>
                   </div>
                   <div>
-                    <span className="mb-1 block font-interface text-caption-meta uppercase tracking-wider text-terre-de-dakar">
+                    {/* text-maison-primary-strong, pas text-terre-de-dakar brut : même
+                        défaut fond clair (bg-sable/40) que l'or-karite ci-dessus, confirmé
+                        par axe-core (Vague 5) — le hover ci-dessous aussi, même surface. */}
+                    <span className="mb-1 block font-interface text-caption-meta uppercase tracking-wider text-maison-primary-strong">
                       Escale · {escale.escale_geographique ?? escale.nom}
                     </span>
-                    <h3 className="font-display text-headline-sm text-encre-baobab transition-colors group-hover:text-terre-de-dakar">
+                    <h3 className="font-display text-headline-sm text-encre-baobab transition-colors group-hover:text-maison-primary-strong">
                       {escale.nom}
                     </h3>
                     <p className="mt-1 font-interface text-caption-meta text-on-surface-variant">
@@ -358,7 +370,9 @@ function ProtocoleEnTroisEtapes() {
     <section className="w-full bg-ivoire-bouye py-space-2xl lg:py-space-3xl">
       <div className="mx-auto max-w-desktop-max px-space-lg lg:px-space-2xl">
         <div className="mx-auto mb-space-2xl max-w-2xl space-y-space-xs text-center">
-          <span className="block font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire">
+          {/* text-ocre-solaire-strong : même défaut fond clair, cf. plus haut sur
+              cette page. */}
+          <span className="block font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire-strong">
             Cheminement intime
           </span>
           <h2 className="font-display text-headline-lg-mobile font-light text-encre-baobab lg:text-headline-lg">
@@ -502,7 +516,9 @@ function Temoignages() {
     <section className="w-full bg-surface-container-low py-space-2xl lg:py-space-3xl">
       <div className="mx-auto max-w-desktop-max px-space-lg lg:px-space-2xl">
         <div className="mx-auto mb-space-2xl max-w-xl space-y-space-xs text-center">
-          <span className="block font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire">
+          {/* text-ocre-solaire-strong : même défaut fond clair, cf. plus haut sur
+              cette page. */}
+          <span className="block font-interface text-caption-meta uppercase tracking-widest text-ocre-solaire-strong">
             Échos de la communauté
           </span>
           <h2 className="font-display text-headline-lg-mobile font-light text-encre-baobab lg:text-headline-lg">
@@ -542,7 +558,9 @@ function BandeauFinal({ prix, article }: { prix: string; article: ArticleCoffret
       <div className="mx-auto max-w-desktop-max px-space-lg lg:px-space-2xl">
         <div className="flex flex-col items-center justify-between gap-space-xl bg-surface p-space-xl shadow-ambient lg:flex-row lg:p-space-2xl">
           <div className="max-w-xl space-y-space-xs text-center lg:text-left">
-            <span className="block font-interface text-caption-meta uppercase tracking-wider text-terre-de-dakar">
+            {/* text-maison-primary-strong, pas text-terre-de-dakar brut : même
+                défaut fond clair, confirmé par axe-core (Vague 5). */}
+            <span className="block font-interface text-caption-meta uppercase tracking-wider text-maison-primary-strong">
               Votre initiation commence ici
             </span>
             <h2 className="font-display text-headline-md text-encre-baobab">Prêt à commencer la traversée ?</h2>

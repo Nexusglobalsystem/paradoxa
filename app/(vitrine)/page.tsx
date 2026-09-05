@@ -228,14 +228,17 @@ function PortailDeuxPortes() {
           className="pointer-events-none absolute -left-20 -top-20 h-96 w-96 rounded-full bg-sauge-claire/15 blur-3xl"
         />
 
+        {/* text-maison-primary-strong, pas text-vert-moringa brut : ~4.1:1 sur ce
+            fond clair (bg-surface-container-low et dégradés apparentés) —
+            confirmé par axe-core (Vague 5). */}
         <div className="relative z-10 flex items-center justify-between">
-          <span className="flex items-center gap-space-xs text-vert-moringa">
+          <span className="flex items-center gap-space-xs text-maison-primary-strong">
             <IconeFeuille className="h-[18px] w-[18px]" />
             <span className="font-interface text-caption-meta uppercase tracking-[0.2em]">
               Botanique Fondatrice
             </span>
           </span>
-          <span className="font-label-tabular text-label-tabular tracking-widest text-vert-moringa/80">
+          <span className="font-label-tabular text-label-tabular tracking-widest text-maison-primary-strong">
             Vol. 02
           </span>
         </div>
@@ -254,7 +257,9 @@ function PortailDeuxPortes() {
               sizes="(min-width: 1024px) 320px, 60vw"
               className="object-cover shadow-xl"
             />
-            <div className="absolute inset-x-2 bottom-2 flex items-center justify-between bg-surface/85 px-space-sm py-space-xxs text-vert-moringa backdrop-blur-md">
+            {/* text-maison-primary-strong : même défaut fond clair (bg-surface/85),
+                confirmé par axe-core (Vague 5). */}
+            <div className="absolute inset-x-2 bottom-2 flex items-center justify-between bg-surface/85 px-space-sm py-space-xxs text-maison-primary-strong backdrop-blur-md">
               <span className="font-interface text-caption-meta tracking-wider">
                 Baume Nutritif 60 g
               </span>
@@ -265,7 +270,9 @@ function PortailDeuxPortes() {
 
         <div className="relative z-10 max-w-[50ch] space-y-space-sm">
           <div>
-            <span className="mb-space-xxs block font-interface text-caption-meta uppercase tracking-[0.2em] text-vert-moringa">
+            {/* text-maison-primary-strong : même défaut fond clair, confirmé par
+                axe-core (Vague 5). */}
+            <span className="mb-space-xxs block font-interface text-caption-meta uppercase tracking-[0.2em] text-maison-primary-strong">
               Body care — le rituel
             </span>
             <h2 className="font-display text-display-hero-mobile leading-none tracking-tight text-encre-baobab lg:text-display-hero">
@@ -315,8 +322,14 @@ function ManifesteBandeau() {
       </svg>
 
       <div className="relative mx-auto max-w-desktop-max space-y-space-2xl">
+        {/* text-or-karite-strong, pas text-or-karite : même défaut fond clair
+            (bg-surface-container) que partout ailleurs sur le site — l'axe-core
+            de e2e/portail.spec.ts ne le signale pas ici (probable "incomplete"
+            plutôt que "violation" à cause du SVG décoratif absolument positionné
+            en arrière-plan, qu'axe ne sait pas toujours résoudre), mais la
+            physique des couleurs ne change pas : corrigé par prudence. */}
         <div className="mx-auto reading-max space-y-space-md text-center">
-          <span className="block font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite">
+          <span className="block font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite-strong">
             Le Manifeste du Groupe
           </span>
           <h2 className="font-display text-headline-lg-mobile leading-tight text-encre-baobab lg:text-headline-lg">
@@ -335,7 +348,7 @@ function ManifesteBandeau() {
             numero="01"
             icone={<IconeArbre className="h-[22px] w-[22px]" />}
             titre="L'Arbre Sacré"
-            accentClassName="text-terre-de-dakar"
+            accentClassName="text-terre-de-dakar-strong"
             tag="Filière traçable"
             tagIcone={<IconeCoche className="h-[14px] w-[14px]" />}
           >
@@ -347,7 +360,7 @@ function ManifesteBandeau() {
             numero="02"
             icone={<IconeCompas className="h-[22px] w-[22px]" />}
             titre="La Règle d'Or (φ)"
-            accentClassName="text-or-karite"
+            accentClassName="text-or-karite-strong"
             tag="Harmonie géométrique"
             tagIcone={<IconeBalance className="h-[14px] w-[14px]" />}
           >
@@ -359,7 +372,7 @@ function ManifesteBandeau() {
             numero="03"
             icone={<IconeFiole className="h-[22px] w-[22px]" />}
             titre="L'Atelier Vivant"
-            accentClassName="text-vert-moringa"
+            accentClassName="text-vert-moringa-strong"
             tag="Laboratoire certifié"
             tagIcone={<IconeFiole className="h-[14px] w-[14px]" />}
           >
@@ -393,8 +406,10 @@ function Pilier({
   return (
     <Card className="flex flex-col justify-between gap-space-md border-0 p-space-xl shadow-ambient transition-shadow duration-300 ease-out hover:shadow-lg">
       <div className="space-y-space-sm">
+        {/* text-or-karite-strong sur {numero} (texte), pas sur {icone} (décoratif) :
+            même prudence que "Le Manifeste du Groupe" plus haut sur cette page. */}
         <div className="flex items-center justify-between">
-          <span className="font-display text-headline-sm text-or-karite">{numero}</span>
+          <span className="font-display text-headline-sm text-or-karite-strong">{numero}</span>
           <span className="text-or-karite">{icone}</span>
         </div>
         <h3 className="font-display text-title-editorial text-encre-baobab">{titre}</h3>

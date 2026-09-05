@@ -16,7 +16,7 @@ export function PuissanceDots({ valeur, className }: PuissanceDotsProps) {
     <span
       role="img"
       aria-label={`Puissance ${valeur} sur 5`}
-      className={cn("inline-flex items-center gap-0.5 text-or-karite text-[11px]", className)}
+      className={cn("inline-flex items-center gap-0.5 text-or-karite-strong text-[11px]", className)}
     >
       {points.map((rempli, i) => (
         <span key={i} aria-hidden="true" className={rempli ? undefined : "opacity-30"}>

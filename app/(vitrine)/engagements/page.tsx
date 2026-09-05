@@ -80,7 +80,9 @@ export default function EngagementsPage() {
       <section className="w-full bg-surface-container-high px-space-lg pb-space-xl pt-space-2xl lg:px-space-2xl">
         <div className="mx-auto flex max-w-desktop-max flex-col gap-space-lg lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-reading-max space-y-space-xs">
-            <span className="flex items-center gap-space-xs font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite">
+            {/* text-or-karite-strong, pas text-or-karite : bandeau sur fond clair
+                (bg-surface-container-high) — confirmé par axe-core (Vague 5). */}
+            <span className="flex items-center gap-space-xs font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite-strong">
               <span className="h-1.5 w-1.5 rounded-full bg-or-karite" aria-hidden="true" />
               Engagements
             </span>
@@ -172,7 +174,9 @@ export default function EngagementsPage() {
                 className={`space-y-space-md lg:col-span-5 ${i % 2 === 1 ? "lg:order-2" : ""}`}
               >
                 <div className="flex items-center gap-space-xs">
-                  <span className="font-label-tabular text-label-tabular font-semibold text-or-karite">
+                  {/* text-or-karite-strong, pas text-or-karite : section sur fond clair
+                      (bg-ivoire-bouye) — confirmé par axe-core (Vague 5). */}
+                  <span className="font-label-tabular text-label-tabular font-semibold text-or-karite-strong">
                     {pilier.numero}
                   </span>
                   <span className="h-px w-8 bg-or-karite" aria-hidden="true" />

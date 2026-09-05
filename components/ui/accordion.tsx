@@ -28,7 +28,9 @@ export function AccordionTrigger({ className, children, ...props }: AccordionTri
       className={cn(
         "font-display marker:content-none [&::-webkit-details-marker]:hidden",
         "flex cursor-pointer list-none items-center justify-between gap-space-md py-space-sm text-title-editorial text-encre-baobab transition-colors duration-300 ease-out",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-or-karite focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+        // ring-encre-baobab, pas -or-karite : voir la même note dans
+        // components/ui/button.tsx (WCAG 1.4.11 contre --color-surface).
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-encre-baobab focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
         className,
       )}
       {...props}

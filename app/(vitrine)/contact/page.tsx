@@ -61,7 +61,9 @@ export default function ContactPage() {
       <section className="w-full bg-ivoire-bouye px-space-lg py-space-xl lg:px-space-2xl">
         <div className="mx-auto flex max-w-desktop-max flex-col gap-space-md md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="flex items-center gap-space-xs font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite">
+            {/* text-or-karite-strong, pas text-or-karite : bandeau sur fond clair
+                (bg-ivoire-bouye) — confirmé par axe-core (Vague 5). */}
+            <div className="flex items-center gap-space-xs font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite-strong">
               <span className="h-1.5 w-1.5 rounded-full bg-or-karite" aria-hidden="true" />
               Conciergerie
             </div>
@@ -86,7 +88,9 @@ export default function ContactPage() {
                 key={a.ville}
                 className="rounded-xl border border-outline-variant/40 bg-surface-container-low p-space-lg"
               >
-                <span className="font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite">
+                {/* text-or-karite-strong, pas text-or-karite : carte sur fond clair
+                    (bg-surface-container-low) — confirmé par axe-core (Vague 5). */}
+                <span className="font-interface text-caption-meta uppercase tracking-[0.2em] text-or-karite-strong">
                   {a.maison}
                 </span>
                 <p className="mt-space-xxs font-display text-title-editorial text-encre-baobab">
@@ -94,14 +98,16 @@ export default function ContactPage() {
                 </p>
                 <div className="mt-space-md grid grid-cols-2 gap-space-md font-interface text-body-ui text-on-surface-variant">
                   <div>
-                    <span className="block text-caption-meta uppercase tracking-wider text-or-karite">
+                    {/* text-or-karite-strong : même carte fond clair, cf. ci-dessus. */}
+                    <span className="block text-caption-meta uppercase tracking-wider text-or-karite-strong">
                       Horaires
                     </span>
                     <span>{a.horaires[0]}</span>
                     <span className="block text-on-surface-variant/80">{a.horaires[1]}</span>
                   </div>
                   <div>
-                    <span className="block text-caption-meta uppercase tracking-wider text-or-karite">
+                    {/* text-or-karite-strong : même carte fond clair, cf. ci-dessus. */}
+                    <span className="block text-caption-meta uppercase tracking-wider text-or-karite-strong">
                       Écrire
                     </span>
                     <a

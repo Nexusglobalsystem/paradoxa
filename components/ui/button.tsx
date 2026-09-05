@@ -44,7 +44,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         className={cn(
           "font-interface inline-flex items-center justify-center font-medium tracking-wide transition-colors duration-300 ease-out disabled:pointer-events-none disabled:opacity-40",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-or-karite focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+          // ring-encre-baobab, pas -or-karite : l'or échoue le contraste
+          // non-textuel (WCAG 1.4.11, ~1.7:1) contre --color-surface, le
+          // fond du décalage de l'anneau — invariant et clair sur tout le
+          // site (voir app/design-tokens.css). Encre-baobab y tient ≥10:1.
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-encre-baobab focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
           variantClasses[variant],
           sizeClasses[size],
           className,

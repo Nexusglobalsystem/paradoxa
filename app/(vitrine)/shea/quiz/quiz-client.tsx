@@ -111,8 +111,12 @@ export function QuizClient({ produitsParEscale, coffret }: QuizClientProps) {
 
   return (
     <div className="relative flex w-full flex-col">
-      {/* Fond atmosphérique — encre profonde avec halos or diffus, cohérent avec la maquette Stitch (dust/particules simplifiées en dégradés statiques, pas de canvas animé). */}
-      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      {/* Fond atmosphérique — encre profonde avec halos or diffus, cohérent avec la maquette Stitch (dust/particules simplifiées en dégradés statiques, pas de canvas animé).
+          absolute, pas fixed : voir la note dans quiz-resultat.tsx (Vague 5) — un
+          ancêtre avec transform casse le positionnement fixed et laisse
+          transparaître le fond clair du layout derrière un texte pensé pour un
+          fond sombre. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-encre-baobab" />
         <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-ocre-solaire/15 blur-[120px]" />
         <div className="absolute right-0 top-1/2 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-terre-de-dakar/20 blur-[140px]" />
@@ -141,11 +145,16 @@ export function QuizClient({ produitsParEscale, coffret }: QuizClientProps) {
                 Étape <span className="font-medium text-or-karite">{String(etapeIndex + 1).padStart(2, "0")}</span> sur{" "}
                 {String(TOTAL_QUESTIONS).padStart(2, "0")}
               </span>
+              {/* aria-label sur le Link : même bug que le header vitrine
+                  (app/(vitrine)/layout.tsx, Vague 5) — sous md, le libellé texte
+                  disparaît (hidden md:inline) et l'icône est aria-hidden, donc le
+                  lien n'a plus aucun nom accessible (WCAG 4.1.2). */}
               <Link
                 href="/shea"
+                aria-label="Quitter l'expérience"
                 className="flex items-center gap-space-xs font-interface text-caption-meta tracking-wider text-sable/70 transition-colors duration-300 ease-out hover:text-or-karite"
               >
-                <span className="hidden md:inline">Quitter l&apos;expérience</span>
+                <span className="hidden md:inline" aria-hidden="true">Quitter l&apos;expérience</span>
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-encre-baobab/80">
                   <IconeCroix className="h-[15px] w-[15px]" />
                 </span>

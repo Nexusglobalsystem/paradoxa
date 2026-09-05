@@ -128,11 +128,13 @@ export default function IngredientMoringaPage() {
           >
             <span>La Paradoxa</span>
             <span aria-hidden="true">/</span>
-            <span className="font-medium text-vert-moringa">Maison ÉCLORÉE</span>
+            {/* text-maison-primary-strong, pas text-vert-moringa brut : ~4.1:1 sur ce
+                fond clair — confirmé par axe-core (Vague 5), même défaut ci-dessous. */}
+            <span className="font-medium text-maison-primary-strong">Maison ÉCLORÉE</span>
             <span aria-hidden="true">/</span>
             <span className="font-medium text-encre-baobab">Moringa oleifera</span>
           </nav>
-          <div className="inline-flex w-fit items-center gap-space-xs rounded-full border border-vert-moringa/20 bg-sauge-claire/15 px-space-sm py-1 font-interface text-caption-meta text-vert-moringa">
+          <div className="inline-flex w-fit items-center gap-space-xs rounded-full border border-vert-moringa/20 bg-sauge-claire/15 px-space-sm py-1 font-interface text-caption-meta text-maison-primary-strong">
             <span className="h-1.5 w-1.5 rounded-full bg-vert-moringa" aria-hidden="true" />
             <span>Filière signature d&apos;agroforesterie régénérative — Le Ferlo, Sénégal</span>
           </div>
@@ -150,7 +152,9 @@ export default function IngredientMoringaPage() {
               <h1 className="font-display text-display-hero-mobile italic leading-[1.05] tracking-tight text-encre-baobab lg:text-display-hero">
                 Moringa <span className="not-italic font-normal">oleifera</span>
               </h1>
-              <p className="font-display text-headline-sm tracking-wide text-vert-moringa">
+              {/* text-maison-primary-strong : même défaut fond clair, confirmé par
+                  axe-core (Vague 5). */}
+              <p className="font-display text-headline-sm tracking-wide text-maison-primary-strong">
                 L&apos;arbre de vie — prodigieuse pharmacopée du Sahel
               </p>
               <div className="my-space-sm h-px w-16 bg-or-karite/80" aria-hidden="true" />
@@ -162,9 +166,14 @@ export default function IngredientMoringaPage() {
               </p>
             </div>
 
+            {/* text-on-surface-variant/70 → text-on-surface-variant (pleine opacité) sur
+                les 4 labels ci-dessous : la version /70 ne fait que 3.75:1 sur ce fond
+                clair — confirmé par axe-core (Vague 5). Le ton plein est déjà utilisé sans
+                problème partout ailleurs sur le site sur des fonds similaires (large marge,
+                ~8:1) : pas besoin d'un token color-mix dédié ici. */}
             <div className="grid grid-cols-2 gap-space-xs rounded-lg border border-sable bg-surface-container/60 p-space-sm sm:grid-cols-4">
               <div className="space-y-0.5 p-space-xs">
-                <span className="block font-interface text-[11px] uppercase tracking-wider text-on-surface-variant/70">
+                <span className="block font-interface text-[11px] uppercase tracking-wider text-on-surface-variant">
                   Famille
                 </span>
                 <span className="block text-label-tabular font-label-tabular text-encre-baobab">
@@ -172,7 +181,7 @@ export default function IngredientMoringaPage() {
                 </span>
               </div>
               <div className="space-y-0.5 border-l border-sable p-space-xs">
-                <span className="block font-interface text-[11px] uppercase tracking-wider text-on-surface-variant/70">
+                <span className="block font-interface text-[11px] uppercase tracking-wider text-on-surface-variant">
                   Partie récoltée
                 </span>
                 <span className="block text-label-tabular font-label-tabular text-encre-baobab">
@@ -180,7 +189,7 @@ export default function IngredientMoringaPage() {
                 </span>
               </div>
               <div className="space-y-0.5 border-l border-sable p-space-xs">
-                <span className="block font-interface text-[11px] uppercase tracking-wider text-on-surface-variant/70">
+                <span className="block font-interface text-[11px] uppercase tracking-wider text-on-surface-variant">
                   Extraction
                 </span>
                 <span className="block text-label-tabular font-label-tabular text-encre-baobab">
@@ -188,10 +197,12 @@ export default function IngredientMoringaPage() {
                 </span>
               </div>
               <div className="space-y-0.5 border-l border-sable p-space-xs">
-                <span className="block font-interface text-[11px] uppercase tracking-wider text-on-surface-variant/70">
+                <span className="block font-interface text-[11px] uppercase tracking-wider text-on-surface-variant">
                   Label
                 </span>
-                <span className="block text-label-tabular font-label-tabular text-vert-moringa">
+                {/* text-maison-primary-strong : même défaut fond clair, confirmé par
+                    axe-core (Vague 5). */}
+                <span className="block text-label-tabular font-label-tabular text-maison-primary-strong">
                   Bio-régénératif
                 </span>
               </div>
@@ -222,7 +233,9 @@ export default function IngredientMoringaPage() {
             </div>
             <div className="mt-3 flex items-center justify-between px-1 font-interface text-caption-meta text-on-surface-variant">
               <span>Photographie naturaliste in situ · Récolte manuelle matinale</span>
-              <span className="italic text-or-karite">Maison Éclorée</span>
+              {/* text-or-karite-strong, pas text-or-karite : fond clair (page par
+                  défaut, ivoire-bouye) — confirmé par axe-core (Vague 5). */}
+              <span className="italic text-or-karite-strong">Maison Éclorée</span>
             </div>
           </div>
         </div>
@@ -233,11 +246,16 @@ export default function IngredientMoringaPage() {
         <div className="reading-max mx-auto space-y-space-2xl px-space-lg">
           <article className="space-y-space-lg">
             <div className="flex items-center gap-3">
-              <span className="font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite">
+              {/* text-or-karite-strong, pas text-or-karite : section sur fond clair
+                  (bg-surface-container-low/80) — confirmé par axe-core (Vague 5). */}
+              <span className="font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite-strong">
                 Chapitre I
               </span>
               <span className="h-px flex-1 bg-sable" aria-hidden="true" />
-              <span className="font-interface text-caption-meta text-on-surface-variant/60">
+              {/* text-on-surface-variant/60 → pleine opacité (ici et pour "Transmission
+                  orale" / "Visuel produit à venir" plus bas) : la version /60 ne fait que
+                  2.98-3.03:1 sur ces fonds clairs — confirmé par axe-core (Vague 5). */}
+              <span className="font-interface text-caption-meta text-on-surface-variant">
                 15°24&apos;N — 14°48&apos;W
               </span>
             </div>
@@ -245,7 +263,9 @@ export default function IngredientMoringaPage() {
               Origine &amp; terroir du Ferlo
             </h2>
             <div className="space-y-space-md font-interface text-body-reading leading-[1.8] text-on-surface">
-              <p className="first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-display-hero first-letter:leading-none first-letter:text-vert-moringa">
+              {/* first-letter:text-maison-primary-strong, pas text-vert-moringa brut :
+                  même défaut fond clair que le reste de cette page (Vague 5). */}
+              <p className="first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-display-hero first-letter:leading-none first-letter:text-maison-primary-strong">
                 Au cœur de la steppe sahélienne du Ferlo, là où les pluies annuelles ne subsistent que
                 quelques semaines éphémères, s&apos;érige une silhouette paradoxale : le Moringa oleifera.
                 Arbre frêle d&apos;apparence mais doté d&apos;une vitalité prodigieuse, il prospère dans des
@@ -269,7 +289,9 @@ export default function IngredientMoringaPage() {
           </article>
 
           <div className="relative overflow-hidden rounded-xl border border-or-karite/40 bg-surface-container p-space-xl text-center shadow-ambient">
-            <p className="font-display text-headline-md font-light italic leading-snug text-vert-moringa">
+            {/* text-maison-primary-strong : même défaut fond clair (bg-surface-container),
+                confirmé par axe-core (Vague 5). */}
+            <p className="font-display text-headline-md font-light italic leading-snug text-maison-primary-strong">
               « Là où le désert avance, le moringa offre son ombre et ses fruits, purifiant l&apos;eau et
               redonnant à la fibre capillaire son élasticité originelle. »
             </p>
@@ -280,11 +302,12 @@ export default function IngredientMoringaPage() {
 
           <article className="space-y-space-lg">
             <div className="flex items-center gap-3">
-              <span className="font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite">
+              {/* text-or-karite-strong : même section fond clair, cf. Chapitre I. */}
+              <span className="font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite-strong">
                 Chapitre II
               </span>
               <span className="h-px flex-1 bg-sable" aria-hidden="true" />
-              <span className="font-interface text-caption-meta text-on-surface-variant/60">
+              <span className="font-interface text-caption-meta text-on-surface-variant">
                 Transmission orale
               </span>
             </div>
@@ -334,7 +357,9 @@ export default function IngredientMoringaPage() {
       {/* Panel composition — molécules actives */}
       <section className="mx-auto w-full max-w-desktop-max px-space-lg py-space-3xl lg:px-space-2xl">
         <div className="reading-max mb-space-2xl space-y-space-xs">
-          <span className="font-interface text-caption-meta uppercase tracking-[0.2em] text-vert-moringa">
+          {/* text-maison-primary-strong : même défaut fond clair, confirmé par
+              axe-core (Vague 5). */}
+          <span className="font-interface text-caption-meta uppercase tracking-[0.2em] text-maison-primary-strong">
             Biochimie végétale
           </span>
           <h2 className="font-display text-headline-lg font-light text-encre-baobab">
@@ -354,10 +379,14 @@ export default function IngredientMoringaPage() {
             >
               <div>
                 <div className="mb-space-md flex items-start justify-between">
-                  <span className="font-interface text-caption-meta tracking-widest text-or-karite">
+                  {/* text-or-karite-strong, pas text-or-karite : carte sur fond clair
+                      (bg-surface) — confirmé par axe-core (Vague 5). */}
+                  <span className="font-interface text-caption-meta tracking-widest text-or-karite-strong">
                     {molecule.code}
                   </span>
-                  <span className="font-display text-headline-md font-light text-vert-moringa">
+                  {/* text-maison-primary-strong : même défaut fond clair (bg-surface),
+                      confirmé par axe-core (Vague 5). */}
+                  <span className="font-display text-headline-md font-light text-maison-primary-strong">
                     {molecule.valeur}
                   </span>
                 </div>
@@ -382,7 +411,9 @@ export default function IngredientMoringaPage() {
         <div className="rounded-2xl border border-or-karite/40 bg-surface-container p-space-xl shadow-ambient lg:p-space-2xl">
           <div className="grid grid-cols-1 items-center gap-space-xl lg:grid-cols-12">
             <div className="space-y-space-md lg:col-span-5">
-              <span className="font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite">
+              {/* text-or-karite-strong, pas text-or-karite : bloc sur fond clair
+                  (bg-surface-container) — confirmé par axe-core (Vague 5). */}
+              <span className="font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite-strong">
                 Anatomie de la plante
               </span>
               <h2 className="font-display text-headline-lg font-light text-encre-baobab">
@@ -399,7 +430,9 @@ export default function IngredientMoringaPage() {
                     key={partie.numero}
                     className="flex items-start gap-3 rounded-lg border border-sable bg-surface/80 p-space-sm"
                   >
-                    <span className="font-label-tabular text-label-tabular text-or-karite">
+                    {/* text-or-karite-strong, pas text-or-karite : carte sur fond clair
+                        (bg-surface/80) — confirmé par axe-core (Vague 5). */}
+                    <span className="font-label-tabular text-label-tabular text-or-karite-strong">
                       {partie.numero}.
                     </span>
                     <div>
@@ -461,7 +494,9 @@ export default function IngredientMoringaPage() {
                 </svg>
                 <div className="flex w-full items-center justify-between border-t border-sable pt-2 font-interface text-caption-meta text-on-surface-variant">
                   <span className="font-display text-[13px] italic">Moringa oleifera Lam.</span>
-                  <span className="text-[11px] text-or-karite">Gravure n° 812</span>
+                  {/* text-or-karite-strong, pas text-or-karite : carte sur fond clair
+                      (bg-surface) — confirmé par axe-core (Vague 5). */}
+                  <span className="text-[11px] text-or-karite-strong">Gravure n° 812</span>
                 </div>
               </div>
             </div>
@@ -512,16 +547,20 @@ export default function IngredientMoringaPage() {
       <section className="mx-auto w-full max-w-desktop-max px-space-lg py-space-3xl lg:px-space-2xl">
         <div className="mb-space-2xl flex flex-col gap-space-md md:flex-row md:items-end md:justify-between">
           <div>
-            <span className="font-interface text-caption-meta uppercase tracking-[0.2em] text-vert-moringa">
+            {/* text-maison-primary-strong : même défaut fond clair, confirmé par
+                axe-core (Vague 5). */}
+            <span className="font-interface text-caption-meta uppercase tracking-[0.2em] text-maison-primary-strong">
               Formulations botaniques
             </span>
             <h2 className="font-display text-headline-lg font-light text-encre-baobab">
               Les rituels infusés au moringa
             </h2>
           </div>
+          {/* text-maison-primary-strong : même défaut fond clair, confirmé par
+              axe-core (Vague 5). */}
           <Link
             href="/ecloree"
-            className="inline-flex items-center gap-2 self-start border-b border-vert-moringa/40 pb-1 font-interface text-caption-meta uppercase tracking-widest text-vert-moringa transition-colors duration-300 ease-out hover:text-encre-baobab md:self-auto"
+            className="inline-flex items-center gap-2 self-start border-b border-vert-moringa/40 pb-1 font-interface text-caption-meta uppercase tracking-widest text-maison-primary-strong transition-colors duration-300 ease-out hover:text-encre-baobab md:self-auto"
           >
             Explorer la collection Maison ÉCLORÉE
           </Link>
@@ -537,7 +576,7 @@ export default function IngredientMoringaPage() {
                 <Badge variant="outline" className="absolute left-4 top-4 uppercase">
                   {produit.tag}
                 </Badge>
-                <span className="font-interface text-caption-meta text-on-surface-variant/60">
+                <span className="font-interface text-caption-meta text-on-surface-variant">
                   Visuel produit à venir
                 </span>
               </div>
@@ -548,7 +587,9 @@ export default function IngredientMoringaPage() {
                       {produit.format}
                     </span>
                   </div>
-                  <h3 className="font-display text-headline-sm text-encre-baobab transition-colors duration-300 ease-out group-hover:text-vert-moringa">
+                  {/* group-hover:text-maison-primary-strong : même défaut fond
+                      clair, confirmé par axe-core (Vague 5). */}
+                  <h3 className="font-display text-headline-sm text-encre-baobab transition-colors duration-300 ease-out group-hover:text-maison-primary-strong">
                     {produit.nom}
                   </h3>
                   <p className="font-interface text-body-ui leading-relaxed text-on-surface-variant">

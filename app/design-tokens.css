@@ -159,7 +159,7 @@
    * assombrie par color-mix vers Encre Baobab, même mécanisme que
    * --maison-primary-strong plus bas, pour repasser au-dessus de 4.5:1.
    */
-  --color-success: color-mix(in srgb, var(--color-vert-moringa) 85%, var(--color-encre-baobab) 15%);
+  --color-success: var(--color-vert-moringa-strong);
   --color-danger: var(--color-rouge-bissap);
 
   /*
@@ -183,6 +183,38 @@
    * surface-container-low (6.11:1).
    */
   --color-or-karite-strong: color-mix(in srgb, var(--color-or-karite) 37%, var(--color-encre-baobab) 63%);
+
+  /*
+   * ── ocre-solaire-strong : même défaut, même remède ──────────────────
+   * Trouvé par l'agent qa-accessibilite (Vague 5) sur les éditoriaux SHÉA
+   * (/shea/parfums/[slug]) : Ocre Solaire brut en texte ne fait que 2.55:1
+   * sur ivoire-bouye — sous les 4.5:1 requis, quoique moins sévère que
+   * l'or karité car intrinsèquement plus sombre (#c98a2e vs #d9b26a).
+   * Mélange 50 % ocre / 50 % encre (moins de correction nécessaire qu'or-
+   * karite-strong) : calculé pour rester ≥ 4.5:1 sur sable, la surface
+   * claire la plus défavorable (4.72:1), avec marge supérieure sur
+   * ivoire-bouye (5.71:1).
+   */
+  --color-ocre-solaire-strong: color-mix(in srgb, var(--color-ocre-solaire) 50%, var(--color-encre-baobab) 50%);
+
+  /*
+   * ── terre-de-dakar-strong / vert-moringa-strong ─────────────────────
+   * Même défaut, même remède, pour les deux couleurs qui servent aussi de
+   * --maison-primary (SHÉA / ÉCLORÉE) : brutes, elles échouent l'AA en
+   * texte sur toute surface claire (Terre de Dakar ~2.4-2.8:1, Vert
+   * Moringa ~3.7-4.1:1 mesurés). Définies ici comme tokens autonomes (pas
+   * seulement via --maison-primary-strong) car utilisées aussi hors
+   * contexte data-maison — ex. le portail, qui affiche les trois couleurs
+   * de marque côte à côte sans bascule de thème.
+   *
+   * Ratio initial (85 % / 15 %, aligné sur le premier calcul or-karite-
+   * strong) insuffisant une fois mesuré sur les fonds composites réels du
+   * site (badges à fond teinté translucide type bg-maison-accent/20 posé
+   * sur surface-container-high) : ne clearait que 3.95-4.60:1. Ratios
+   * renforcés ci-dessous, vérifiés ≥ 5:1 sur ces mêmes fonds composites.
+   */
+  --color-terre-de-dakar-strong: color-mix(in srgb, var(--color-terre-de-dakar) 70%, var(--color-encre-baobab) 30%);
+  --color-vert-moringa-strong: color-mix(in srgb, var(--color-vert-moringa) 65%, var(--color-encre-baobab) 35%);
 }
 
 /**
@@ -214,14 +246,20 @@
  * l'accent — cf. tokens.json → theme.groupe et CLAUDE.md "Le groupe est
  * encre profonde et or".
  *
- * -primary-strong est une variante légèrement assombrie de -primary,
- * obtenue par color-mix vers Encre Baobab (jamais une valeur codée en dur :
- * c'est un calcul sur le token lui-même). Elle sert de fond aux boutons
- * pleins avec texte clair par-dessus : Vert Moringa brut sur Ivoire Bouye
- * ne passe pas le contraste AA en texte normal (~4.1:1, mesuré) ; la
- * version -strong repasse au-dessus de 4.5:1 pour les trois maisons tout en
- * gardant la teinte reconnaissable. Encre Baobab (déjà très sombre) n'est
- * quasiment pas affecté par le mélange.
+ * -primary-strong est une variante assombrie de -primary, obtenue par
+ * color-mix vers Encre Baobab (jamais une valeur codée en dur : c'est un
+ * calcul sur le token lui-même). Elle sert de fond aux boutons pleins avec
+ * texte clair par-dessus, et de couleur de TEXTE sur fond clair partout où
+ * la marque brute échoue l'AA : Terre de Dakar et Vert Moringa bruts ne
+ * passent pas le contraste normal sur Ivoire Bouye (~2.4-4.1:1, mesuré).
+ *
+ * Ratio 85 % / 15 % initial insuffisant (Vague 5, axe-core) : sur les
+ * badges/pastilles à fond teinté translucide (ex. bg-maison-accent/20 posé
+ * sur surface-container-high, ≈ #dadac9 rendu), le mélange à 85 % ne
+ * clearait que 3.95-4.60:1 selon la maison — sous 4.5:1 ou à sa marge
+ * d'erreur immédiate. Ratios renforcés ci-dessous pour rester ≥ 4.5:1 avec
+ * une vraie marge sur ce fond composite, pas seulement sur Ivoire Bouye pur.
+ * Encre Baobab (déjà très sombre) n'est quasiment pas affecté par le mélange.
  */
 :root,
 [data-maison="groupe"] {
@@ -232,13 +270,13 @@
 
 [data-maison="shea"] {
   --maison-primary: var(--color-terre-de-dakar);
-  --maison-primary-strong: color-mix(in srgb, var(--color-terre-de-dakar) 85%, var(--color-encre-baobab) 15%);
+  --maison-primary-strong: var(--color-terre-de-dakar-strong);
   --maison-accent: var(--color-ocre-solaire);
 }
 
 [data-maison="ecloree"] {
   --maison-primary: var(--color-vert-moringa);
-  --maison-primary-strong: color-mix(in srgb, var(--color-vert-moringa) 85%, var(--color-encre-baobab) 15%);
+  --maison-primary-strong: var(--color-vert-moringa-strong);
   --maison-accent: var(--color-sauge-claire);
 }
 

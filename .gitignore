@@ -47,3 +47,6 @@ next-env.d.ts
 
 # maquettes Stitch brutes (référence locale, pas versionnées : volumineux, régénérables)
 /stitch_la_paradoxa/
+
+# état d'exécution local de Claude Code (verrous de session, non versionné)
+/.claude/scheduled_tasks.lock

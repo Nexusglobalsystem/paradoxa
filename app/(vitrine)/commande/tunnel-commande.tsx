@@ -198,10 +198,13 @@ export function TunnelCommande() {
             <span>Réglez par</span>
             <span className="bg-surface-container px-space-xs py-0.5">Carte bancaire</span>
             <span className="bg-surface-container px-space-xs py-0.5">Apple Pay</span>
-            <span className="bg-surface-container px-space-xs py-0.5 opacity-50" title="Bientôt disponible">
+            {/* bg-surface-container/60, pas opacity-50 sur tout l'élément : l'opacité
+                globale faisait aussi tomber le texte à 2.38:1, confirmé par axe-core
+                (Vague 5) — ne réduire que le fond garde le texte pleinement lisible. */}
+            <span className="bg-surface-container/60 px-space-xs py-0.5" title="Bientôt disponible">
               Wave (UEMOA)
             </span>
-            <span className="bg-surface-container px-space-xs py-0.5 opacity-50" title="Bientôt disponible">
+            <span className="bg-surface-container/60 px-space-xs py-0.5" title="Bientôt disponible">
               Orange Money
             </span>
           </div>

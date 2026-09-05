@@ -210,7 +210,10 @@ export default async function FicheProduitEcloreePage({ params }: PageProps) {
 
           <div className="flex flex-col gap-space-lg lg:col-span-6">
             <div className="space-y-space-xs border-b border-sable/80 pb-space-sm">
-              <span className="font-interface text-caption-meta font-medium uppercase tracking-[0.2em] text-maison-primary">
+              {/* text-maison-primary-strong, pas text-maison-primary : vert-moringa brut
+                  ne fait que ~4.1:1 sur ce fond clair (page vitrine, bg-ivoire-bouye) —
+                  confirmé par axe-core (Vague 5). */}
+              <span className="font-interface text-caption-meta font-medium uppercase tracking-[0.2em] text-maison-primary-strong">
                 Maison ÉCLORÉE · Soin botanique
               </span>
               <h1 className="font-display text-headline-lg font-light tracking-tight text-encre-baobab">

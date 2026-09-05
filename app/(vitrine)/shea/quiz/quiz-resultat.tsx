@@ -81,7 +81,14 @@ export function QuizResultat({ produit, coffret, onModifierReponses, onRecommenc
 
   return (
     <div className="relative flex w-full flex-col">
-      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      {/* absolute, pas fixed : ce calque décoratif doit couvrir CET écran, pas le
+          viewport — en `fixed`, un ancêtre avec transform (ex. le wrapper de
+          transition de page "révélations à l'encre", CLAUDE.md) change son
+          contexte de positionnement et le calque ne recouvre plus rien, laissant
+          transparaître le bg-ivoire-bouye clair du layout vitrine derrière tout
+          le texte pensé pour un fond sombre — axe-core mesurait #f4efe3 (ivoire)
+          au lieu de #1b2a23 (encre) en arrière-plan effectif (Vague 5). */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-encre-baobab" />
         <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-ocre-solaire/15 blur-[120px]" />
         <div className="absolute right-0 top-1/2 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-terre-de-dakar/20 blur-[140px]" />

@@ -157,14 +157,14 @@ export function ColonneFormulation({
             <table className="w-full border-collapse text-left">
               <thead>
                 <tr className="border-b border-sable/10 font-caption-meta text-[11px] uppercase tracking-wider text-sable/60">
-                  <th className="px-2 py-2">Strate</th>
-                  <th className="px-2 py-2">Matière première</th>
-                  <th className="px-2 py-2">Origine / Fournisseur</th>
-                  <th className="px-2 py-2 text-right">Part %</th>
-                  <th className="px-2 py-2 text-right">Pour {poidsReferenceG} g</th>
-                  <th className="px-2 py-2 text-right">Coût</th>
-                  <th className="px-2 py-2 text-center">IFRA</th>
-                  <th className="px-1 py-2 text-center">
+                  <th scope="col" className="px-2 py-2">Strate</th>
+                  <th scope="col" className="px-2 py-2">Matière première</th>
+                  <th scope="col" className="px-2 py-2">Origine / Fournisseur</th>
+                  <th scope="col" className="px-2 py-2 text-right">Part %</th>
+                  <th scope="col" className="px-2 py-2 text-right">Pour {poidsReferenceG} g</th>
+                  <th scope="col" className="px-2 py-2 text-right">Coût</th>
+                  <th scope="col" className="px-2 py-2 text-center">IFRA</th>
+                  <th scope="col" className="px-1 py-2 text-center">
                     <span className="sr-only">Retirer</span>
                   </th>
                 </tr>

@@ -22,8 +22,10 @@ const sections: LegalSection[] = [
         </p>
         <div className="space-y-space-sm rounded-lg bg-surface-container p-space-lg">
           <div className="grid grid-cols-1 gap-space-md font-interface text-body-ui sm:grid-cols-2">
+            {/* text-or-karite-strong, pas text-or-karite : encart sur fond clair
+                (bg-surface-container) — confirmé par axe-core (Vague 5). */}
             <div>
-              <span className="block text-caption-meta uppercase tracking-wider text-or-karite">
+              <span className="block text-caption-meta uppercase tracking-wider text-or-karite-strong">
                 Siège social
               </span>
               <p className="mt-space-xxs text-encre-baobab">
@@ -32,8 +34,9 @@ const sections: LegalSection[] = [
                 75007 Paris — France
               </p>
             </div>
+            {/* text-or-karite-strong : même encart fond clair, cf. Siège social. */}
             <div>
-              <span className="block text-caption-meta uppercase tracking-wider text-or-karite">
+              <span className="block text-caption-meta uppercase tracking-wider text-or-karite-strong">
                 Atelier de formulation
               </span>
               <p className="mt-space-xxs text-encre-baobab">

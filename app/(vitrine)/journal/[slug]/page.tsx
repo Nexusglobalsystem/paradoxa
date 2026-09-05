@@ -94,17 +94,19 @@ export default async function ArticleJournalPage({ params }: PageProps) {
       <div className="w-full bg-surface-container-low/70 py-space-md">
         <div className="mx-auto flex max-w-desktop-max flex-wrap items-center justify-between gap-space-md px-space-lg font-interface text-caption-meta text-on-surface-variant lg:px-space-2xl">
           <div className="flex flex-wrap items-center gap-space-md">
+            {/* text-or-karite-strong, pas text-or-karite : barre méta sur fond clair
+                (bg-surface-container-low/70) — confirmé par axe-core (Vague 5). */}
             <div className="flex items-center gap-space-xs">
-              <span className="text-[11px] font-medium uppercase tracking-widest text-or-karite">
+              <span className="text-[11px] font-medium uppercase tracking-widest text-or-karite-strong">
                 Texte
               </span>
               <span className="text-body-ui font-medium text-encre-baobab">{article.auteur}</span>
             </div>
-            <span className="text-or-karite/40" aria-hidden="true">
+            <span className="text-or-karite-strong/70" aria-hidden="true">
               /
             </span>
             <div className="flex items-center gap-space-xs">
-              <span className="text-[11px] font-medium uppercase tracking-widest text-or-karite">
+              <span className="text-[11px] font-medium uppercase tracking-widest text-or-karite-strong">
                 Classification
               </span>
               <span className="text-body-ui font-medium text-encre-baobab">
@@ -177,10 +179,12 @@ export default async function ArticleJournalPage({ params }: PageProps) {
               <div className="space-y-space-xs text-center sm:text-left">
                 <div className="flex flex-col gap-space-xxs sm:flex-row sm:items-center sm:gap-space-sm">
                   <h4 className="font-display text-[20px] font-normal text-encre-baobab">{article.auteur}</h4>
-                  <span className="hidden text-or-karite sm:inline" aria-hidden="true">
+                  {/* text-or-karite-strong, pas text-or-karite : bloc signature sur
+                      fond clair (bg-surface-container) — confirmé par axe-core (Vague 5). */}
+                  <span className="hidden text-or-karite-strong sm:inline" aria-hidden="true">
                     •
                   </span>
-                  <span className="font-interface text-caption-meta uppercase tracking-widest text-or-karite">
+                  <span className="font-interface text-caption-meta uppercase tracking-widest text-or-karite-strong">
                     {article.auteurRole}
                   </span>
                 </div>
@@ -214,7 +218,9 @@ export default async function ArticleJournalPage({ params }: PageProps) {
           <div className="mx-auto max-w-desktop-max space-y-space-2xl px-space-lg lg:px-space-2xl">
             <div className="flex flex-col gap-space-sm pb-space-lg md:flex-row md:items-end md:justify-between">
               <div className="space-y-space-xxs">
-                <span className="block font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite">
+                {/* text-or-karite-strong, pas text-or-karite : section sur fond clair
+                    (bg-surface-container) — confirmé par axe-core (Vague 5). */}
+                <span className="block font-interface text-caption-meta uppercase tracking-[0.25em] text-or-karite-strong">
                   Lectures complémentaires
                 </span>
                 <h2 className="font-display text-headline-lg font-light text-encre-baobab">

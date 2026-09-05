@@ -52,19 +52,25 @@ export default function VitrineLayout({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="flex items-center gap-space-md lg:gap-space-lg">
+            {/* aria-label sur le Link : sous 640px le libellé texte disparaît
+                (hidden sm:inline) et l'icône est aria-hidden — sans lui, le
+                lien n'a plus aucun nom accessible (WCAG 4.1.2, confirmé
+                axe-core "link-name" en Vague 5). */}
             <Link
               href="/recherche"
+              aria-label="Recherche"
               className="flex items-center gap-space-xxs font-interface text-caption-meta tracking-wider text-on-surface-variant transition-colors duration-300 ease-out hover:text-encre-baobab"
             >
               <IconeRecherche />
-              <span className="hidden sm:inline">Recherche</span>
+              <span className="hidden sm:inline" aria-hidden="true">Recherche</span>
             </Link>
             <Link
               href="/compte"
+              aria-label="Compte client"
               className="flex items-center gap-space-xxs font-interface text-caption-meta tracking-wider text-on-surface-variant transition-colors duration-300 ease-out hover:text-encre-baobab"
             >
               <IconeCompte />
-              <span className="hidden sm:inline">Compte client</span>
+              <span className="hidden sm:inline" aria-hidden="true">Compte client</span>
             </Link>
             <PanierBadge />
           </div>
