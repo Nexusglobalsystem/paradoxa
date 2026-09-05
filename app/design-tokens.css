@@ -161,6 +161,28 @@
    */
   --color-success: color-mix(in srgb, var(--color-vert-moringa) 85%, var(--color-encre-baobab) 15%);
   --color-danger: var(--color-rouge-bissap);
+
+  /*
+   * ── or-karite-strong : variante lisible de l'accent métallique ─────
+   * Trouvé par le pipeline e2e/axe-core de la Vague 5 (premier test écrit,
+   * e2e/portail.spec.ts) : Or Karité brut échoue lourdement l'AA en texte
+   * sur TOUTE surface claire du site (1.4:1 à 1.8:1 mesurés selon la
+   * surface — ivoire-bouye, surface-container-low, sable — contre 4.5:1
+   * requis), y compris sur son usage le plus fréquent : les éditoriaux en
+   * majuscules espacées ("MAISON SHÉA — ...", intitulés de section). Sur
+   * fond sombre (encre-baobab, cœur des composeurs labo) il reste
+   * parfaitement lisible (7.51:1) — text-or-karite brut y reste donc
+   * approprié, cette variante ne le remplace pas partout, seulement là où
+   * l'agent qa-accessibilite confirme un usage sur fond clair.
+   * Mélange vers Encre Baobab à 37 % karité / 63 % encre (pas le même
+   * ratio que --color-success : Or Karité part de beaucoup plus clair,
+   * 1.8:1, contre ~4.11:1 pour Vert Moringa — il fallait assombrir bien
+   * davantage). Calculé pour rester ≥ 4.5:1 sur la surface claire la plus
+   * défavorable du site (sable, 4.88:1 mesuré) avec une marge réelle,
+   * pas au ras du seuil ; large marge sur ivoire-bouye (5.89:1) et
+   * surface-container-low (6.11:1).
+   */
+  --color-or-karite-strong: color-mix(in srgb, var(--color-or-karite) 37%, var(--color-encre-baobab) 63%);
 }
 
 /**

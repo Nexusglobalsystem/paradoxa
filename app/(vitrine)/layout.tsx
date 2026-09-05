@@ -145,7 +145,10 @@ export default function VitrineLayout({ children }: { children: ReactNode }) {
 function FooterColonne({ titre, children }: { titre: string; children: ReactNode }) {
   return (
     <div className="space-y-space-sm">
-      <span className="block font-caption-meta text-caption-meta uppercase tracking-widest text-or-karite">
+      {/* text-or-karite-strong, pas text-or-karite : ce fond clair
+          (surface-container-low) fait tomber l'or brut à 1.8:1 de contraste,
+          bien sous les 4.5:1 requis — voir app/design-tokens.css. */}
+      <span className="block font-caption-meta text-caption-meta uppercase tracking-widest text-or-karite-strong">
         {titre}
       </span>
       <div className="flex flex-col gap-space-xs">{children}</div>

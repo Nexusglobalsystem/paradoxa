@@ -280,7 +280,12 @@ function PortailDeuxPortes() {
           <div className="flex items-center gap-space-md pt-space-xs">
             <Link
               href="/ecloree"
-              className="inline-flex items-center justify-center gap-space-xs bg-vert-moringa px-space-xl py-space-md font-interface text-body-ui tracking-wider text-ivoire-bouye shadow-ambient transition-colors duration-300 ease-out hover:bg-encre-baobab focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-or-karite focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-low"
+              // bg-success, pas bg-vert-moringa : le vert brut ne fait que
+              // 4.1:1 sur ivoire-bouye, sous les 4.5:1 requis (trouvé par
+              // e2e/portail.spec.ts) — bg-success EST la même teinte
+              // assombrie par color-mix déjà utilisée ailleurs pour ce
+              // problème exact (voir app/design-tokens.css, --color-success).
+              className="inline-flex items-center justify-center gap-space-xs bg-success px-space-xl py-space-md font-interface text-body-ui tracking-wider text-ivoire-bouye shadow-ambient transition-colors duration-300 ease-out hover:bg-encre-baobab focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-or-karite focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-low"
             >
               Découvrir la Maison ÉCLORÉE
               <IconeFleche className="h-[18px] w-[18px]" />

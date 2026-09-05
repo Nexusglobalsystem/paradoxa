@@ -22,7 +22,9 @@ export function PanierBadge() {
         <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" strokeWidth="1.6" />
       </svg>
       <span className="hidden sm:inline">Panier</span>
-      <span className="text-label-tabular font-label-tabular text-or-karite">({nombreArticles})</span>
+      {/* text-or-karite-strong : l'or brut ne fait que 1.7:1 sur ce fond
+          clair (header ivoire-bouye) — voir app/design-tokens.css. */}
+      <span className="text-label-tabular font-label-tabular text-or-karite-strong">({nombreArticles})</span>
     </Link>
   );
 }
