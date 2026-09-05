@@ -115,7 +115,11 @@ export function TunnelCommande() {
 
   return (
     <div data-maison="groupe" className="mx-auto max-w-desktop-max px-space-lg py-space-2xl lg:px-space-2xl">
-      <div className="mb-space-xl flex items-center gap-space-sm font-interface text-caption-meta uppercase tracking-widest text-or-karite">
+      {/* text-or-karite-strong, pas text-or-karite : ce fond clair (bg-ivoire-bouye,
+          hérité du layout vitrine) fait tomber l'or brut à 1.73:1 de contraste,
+          bien sous les 4.5:1 requis — confirmé par axe-core (Vague 5), voir
+          app/design-tokens.css. */}
+      <div className="mb-space-xl flex items-center gap-space-sm font-interface text-caption-meta uppercase tracking-widest text-or-karite-strong">
         <span className="text-encre-baobab">Livraison</span>
         <span aria-hidden="true">—</span>
         <span>Paiement sécurisé</span>

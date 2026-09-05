@@ -289,7 +289,11 @@ function PartitionEscales({ escales }: { escales: EscaleCoffret[] }) {
               >
                 <div className="space-y-space-md">
                   <div className="flex items-center justify-between font-label-tabular text-label-tabular text-on-surface-variant">
-                    <span className="text-or-karite">{String(index + 1).padStart(2, "0")}</span>
+                    {/* text-or-karite-strong, pas text-or-karite : cette carte claire
+                        (bg-sable/40) fait tomber l'or brut à 1.7:1 de contraste, bien
+                        sous les 4.5:1 requis — confirmé par axe-core (Vague 5), voir
+                        app/design-tokens.css. */}
+                    <span className="text-or-karite-strong">{String(index + 1).padStart(2, "0")}</span>
                   </div>
                   <div>
                     <span className="mb-1 block font-interface text-caption-meta uppercase tracking-wider text-terre-de-dakar">
